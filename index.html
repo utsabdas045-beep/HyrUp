@@ -1,0 +1,2677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HyrUp - Connect With The Perfect Job Opportunity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:#1a56db; --primary-dark:#1341b0; --primary-light:#e8f0fe;
+  --dark:#0f172a; --dark-2:#1e293b; --mid:#475569; --light:#94a3b8;
+  --border:#e2e8f0; --bg:#f8fafc; --success:#10b981; --danger:#ef4444;
+  --warning:#f59e0b; --card-shadow:0 4px 24px rgba(15,23,42,0.08);
+  --hover-shadow:0 12px 40px rgba(26,86,219,0.15);
+  --radius:12px; --radius-lg:20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Syne',sans-serif}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none}
+input,select,textarea{font-family:'DM Sans',sans-serif}
+
+/* ANIMATIONS */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInLeft{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse2{0%,100%{box-shadow:0 0 0 0 rgba(26,86,219,.4)}70%{box-shadow:0 0 0 10px rgba(26,86,219,0)}}
+@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-20px) scale(1.05)}66%{transform:translate(-10px,14px) scale(.97)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes countUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gradientMove{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+
+.anim-up{animation:fadeInUp .55s ease both}
+.anim-left{animation:fadeInLeft .55s ease both}
+.d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}
+.d4{animation-delay:.32s}.d5{animation-delay:.4s}.d6{animation-delay:.48s}
+
+/* REVEAL ON SCROLL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* PAGE SYSTEM */
+.page{display:none;animation:fadeIn .35s ease}
+.page.active{display:block}
+
+/* NAVBAR */
+.navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%;transition:box-shadow .3s}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1280px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--dark);cursor:pointer;transition:transform .2s}
+.logo:hover{transform:scale(1.02)}
+.logo-icon{width:36px;height:36px;background:var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;font-weight:800}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-link{padding:8px 14px;border-radius:8px;font-weight:500;font-size:.9rem;color:var(--mid);cursor:pointer;transition:all .2s;position:relative}
+.nav-link:hover,.nav-link.active{color:var(--primary);background:var(--primary-light)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn{padding:10px 20px;border-radius:10px;font-weight:600;font-size:.9rem;transition:all .25s;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.btn-outline{border:1.5px solid var(--border);color:var(--dark);background:transparent}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 4px 14px rgba(26,86,219,.3)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,86,219,.4)}
+.btn-lg{padding:13px 26px;font-size:1rem;border-radius:12px}
+.btn-sm{padding:7px 14px;font-size:.82rem;border-radius:8px}
+.btn-success{background:var(--success);color:#fff}.btn-success:hover{background:#059669;transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--primary)}.btn-white:hover{background:#f0f4ff;transform:translateY(-2px)}
+.btn-danger{background:var(--danger);color:#fff}.btn-danger:hover{background:#dc2626;transform:translateY(-2px)}
+
+/* HERO */
+.hero{padding:90px 5% 80px;background:linear-gradient(135deg,#f0f4ff 0%,#fafbff 50%,#f0fdf9 100%);position:relative;overflow:hidden;text-align:center}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;pointer-events:none}
+.blob-1{width:500px;height:500px;background:#93c5fd;top:-100px;left:-100px;animation:blob 8s ease-in-out infinite}
+.blob-2{width:400px;height:400px;background:#a7f3d0;bottom:-100px;right:-100px;animation:blob 10s ease-in-out infinite reverse}
+.blob-3{width:300px;height:300px;background:#fde68a;top:50%;right:15%;animation:blob 12s ease-in-out infinite 2s}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--primary-light);color:var(--primary);font-weight:600;font-size:.8rem;border-radius:50px;margin-bottom:24px;border:1px solid rgba(26,86,219,.2)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.15;color:var(--dark);margin-bottom:20px;max-width:820px;margin-left:auto;margin-right:auto}
+.hero h1 span{color:var(--primary);font-style:italic}
+.hero p{font-size:1.05rem;color:var(--mid);max-width:560px;margin:0 auto 36px}
+.search-bar{display:flex;align-items:center;background:#fff;border-radius:14px;padding:6px 6px 6px 18px;box-shadow:0 8px 40px rgba(0,0,0,.12);max-width:700px;margin:0 auto 28px;border:1.5px solid var(--border);transition:all .3s}
+.search-bar:focus-within{border-color:var(--primary);box-shadow:0 8px 40px rgba(26,86,219,.2)}
+.search-input{flex:1;border:none;outline:none;font-size:.95rem;color:var(--dark);padding:10px 14px 10px 0;background:transparent}
+.search-divider{width:1px;height:28px;background:var(--border);margin:0 14px;flex-shrink:0}
+.search-location{flex:.8;border:none;outline:none;font-size:.95rem;color:var(--dark);background:transparent;padding:10px}
+.hero-tags{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:8px}
+.hero-tag{display:flex;align-items:center;gap:5px;font-size:.83rem;color:var(--mid);font-weight:500}
+.logos-row{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;opacity:.5;margin-top:14px}
+.logo-pill{background:#fff;padding:9px 22px;border-radius:50px;font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;border:1px solid var(--border)}
+
+/* SECTION */
+.section{padding:76px 5%;max-width:1280px;margin:0 auto}
+.section-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px}
+.section-title{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800}
+.section-sub{font-size:.93rem;color:var(--mid);margin-top:5px}
+.link-btn{font-size:.84rem;color:var(--primary);font-weight:600;display:flex;align-items:center;gap:4px;padding:8px 14px;border:1.5px solid var(--border);border-radius:8px;transition:all .2s;white-space:nowrap;cursor:pointer}
+.link-btn:hover{border-color:var(--primary);background:var(--primary-light)}
+
+/* CATEGORY GRID */
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.category-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 20px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.category-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--primary);transform:scaleX(0);transition:transform .3s}
+.category-card:hover{border-color:var(--primary);box-shadow:var(--hover-shadow);transform:translateY(-4px)}
+.category-card:hover::before{transform:scaleX(1)}
+.cat-icon{width:44px;height:44px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:14px;transition:all .3s}
+.category-card:hover .cat-icon{background:var(--primary);filter:grayscale(1) brightness(10)}
+.cat-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.93rem;margin-bottom:4px}
+.cat-count{font-size:.78rem;color:var(--light)}
+
+/* JOB CARDS */
+.jobs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.job-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:22px;cursor:pointer;transition:all .3s}
+.job-card:hover{border-color:var(--primary);box-shadow:var(--hover-shadow);transform:translateY(-5px)}
+.job-card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.company-logo{width:46px;height:46px;border-radius:12px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Syne',sans-serif;font-size:1rem;color:var(--primary);border:1.5px solid var(--border)}
+.bookmark-btn{background:none;border:none;color:var(--light);cursor:pointer;transition:all .2s;padding:4px;font-size:1.1rem}
+.bookmark-btn:hover{color:var(--primary);transform:scale(1.2)}
+.company-name{font-size:.76rem;color:var(--mid);margin-bottom:1px;font-weight:500}
+.job-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:10px}
+.job-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.tag{padding:3px 9px;border-radius:50px;font-size:.73rem;font-weight:600;background:var(--bg);color:var(--mid);border:1px solid var(--border)}
+.tag.remote{background:#e0f2fe;color:#0284c7;border-color:#bae6fd}
+.tag.full-time{background:#dcfce7;color:#16a34a;border-color:#bbf7d0}
+.tag.contract{background:#fef3c7;color:#d97706;border-color:#fde68a}
+.tag.part-time{background:#fdf4ff;color:#9333ea;border-color:#e9d5ff}
+.tag.new-badge{background:var(--primary-light);color:var(--primary);border-color:#bfdbfe}
+.job-footer{display:flex;align-items:center;justify-content:space-between}
+.job-salary{font-family:'Syne',sans-serif;font-weight:700;font-size:.97rem}
+.job-time{font-size:.73rem;color:var(--light)}
+.apply-btn{background:var(--primary);color:#fff;padding:8px 16px;border-radius:9px;font-size:.8rem;font-weight:600;transition:all .25s}
+.apply-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 4px 14px rgba(26,86,219,.3)}
+
+/* NEW JOB BADGE */
+.tag.posted-badge{background:#fef3c7;color:#b45309;border-color:#fde68a}
+
+/* CTA BANNER */
+.cta-banner{margin:0 5%;border-radius:var(--radius-lg);padding:48px 60px;background:linear-gradient(135deg,var(--primary) 0%,#1341b0 60%,#0d2d8a 100%);display:flex;align-items:center;justify-content:space-between;gap:28px;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;width:400px;height:400px;background:rgba(255,255,255,.05);border-radius:50%;top:-100px;right:-100px}
+.cta-text h2{font-size:1.75rem;color:#fff;margin-bottom:8px}
+.cta-text p{color:rgba(255,255,255,.75);font-size:.93rem;max-width:400px}
+.cta-actions{display:flex;gap:12px;flex-shrink:0}
+
+/* TESTIMONIAL */
+.testimonial-section{padding:80px 5%;background:#fff}
+.testimonial-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.person-placeholder{width:100%;height:400px;background:linear-gradient(135deg,#dbeafe 0%,#ede9fe 100%);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative}
+.floating-card{position:absolute;background:#fff;border-radius:var(--radius);padding:13px 16px;box-shadow:var(--card-shadow);display:flex;align-items:center;gap:11px;font-size:.84rem;animation:float 3s ease-in-out infinite}
+.floating-card.card-1{bottom:28px;left:-18px;animation-delay:0s}
+.floating-card.card-2{top:28px;right:-18px;animation-delay:1.5s}
+.fc-icon{width:34px;height:34px;border-radius:9px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.fc-label{font-size:.69rem;color:var(--light)}
+.fc-value{font-weight:700;font-size:.93rem}
+.testimonial-quote{font-family:'Syne',sans-serif;font-size:1.55rem;font-weight:700;line-height:1.4;margin-bottom:18px}
+.testimonial-quote em{color:var(--primary);font-style:normal}
+.author-avatar{width:42px;height:42px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem}
+
+/* FOOTER */
+.footer{background:var(--dark);color:#fff;padding:60px 5% 28px;margin-top:80px}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:38px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand p{color:rgba(255,255,255,.5);font-size:.86rem;margin:13px 0;max-width:260px;line-height:1.7}
+.footer-socials{display:flex;gap:9px}
+.social-btn{width:33px;height:33px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:pointer;font-size:.8rem;font-weight:700}
+.social-btn:hover{background:var(--primary);transform:translateY(-2px)}
+.footer-col h5{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:15px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:9px}
+.footer-col ul li a{color:rgba(255,255,255,.58);font-size:.86rem;transition:color .2s;cursor:pointer}
+.footer-col ul li a:hover{color:#fff}
+.footer-bottom{max-width:1280px;margin:0 auto;padding-top:22px;display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:rgba(255,255,255,.3)}
+.footer-bottom-links{display:flex;gap:18px}
+.footer-bottom-links a{color:rgba(255,255,255,.3);cursor:pointer;transition:color .2s}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.6)}
+
+/* FIND JOBS LAYOUT */
+.find-jobs-layout{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 68px)}
+.filters-panel{background:#fff;border-right:1px solid var(--border);padding:26px 18px;position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto}
+.filters-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.filters-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.98rem}
+.reset-btn{font-size:.78rem;color:var(--primary);font-weight:600;cursor:pointer;transition:opacity .2s}
+.reset-btn:hover{opacity:.7}
+.filter-group{margin-bottom:22px;border-bottom:1px solid var(--border);padding-bottom:22px}
+.filter-group:last-child{border-bottom:none}
+.filter-label{font-family:'Syne',sans-serif;font-weight:700;font-size:.83rem;margin-bottom:13px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;color:var(--dark)}
+.filter-option{display:flex;align-items:center;gap:9px;margin-bottom:9px;cursor:pointer}
+.filter-option input[type="checkbox"]{width:15px;height:15px;accent-color:var(--primary);cursor:pointer}
+.filter-option span{font-size:.86rem;color:var(--mid);flex:1}
+.filter-option .count{font-size:.76rem;color:var(--light)}
+.range-slider{-webkit-appearance:none;width:100%;height:4px;background:linear-gradient(to right,var(--primary) 60%,var(--border) 60%);border-radius:4px;outline:none;margin:14px 0;cursor:pointer}
+.range-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--primary);cursor:pointer;box-shadow:0 2px 8px rgba(26,86,219,.4)}
+.range-labels{display:flex;justify-content:space-between;font-size:.76rem;color:var(--mid);font-weight:600}
+.alert-box{background:var(--primary-light);border-radius:var(--radius);padding:15px;margin-top:18px}
+.alert-box h6{font-family:'Syne',sans-serif;font-size:.83rem;color:var(--primary);margin-bottom:5px;display:flex;align-items:center;gap:5px;font-weight:700}
+.alert-box p{font-size:.76rem;color:var(--mid);margin-bottom:11px}
+
+/* JOBS MAIN */
+.jobs-main{padding:30px 34px;background:var(--bg)}
+.jobs-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.jobs-count{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem}
+.jobs-count span{color:var(--light);font-weight:400;font-size:.83rem;margin-left:8px}
+.view-toggle{display:flex;gap:4px}
+.view-btn{padding:7px 10px;border-radius:6px;background:transparent;color:var(--light);transition:all .2s;font-size:1rem;border:1.5px solid var(--border);cursor:pointer}
+.view-btn.active{background:var(--primary-light);color:var(--primary);border-color:var(--primary)}
+.sort-select{padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.83rem;color:var(--dark);outline:none;cursor:pointer;background:#fff}
+.active-filters{display:flex;align-items:center;gap:9px;margin-bottom:18px;flex-wrap:wrap}
+.filter-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;background:var(--primary-light);color:var(--primary);border-radius:50px;font-size:.78rem;font-weight:600;border:1.5px solid rgba(26,86,219,.15);transition:all .2s}
+.filter-chip button{background:none;color:var(--primary);font-size:.9rem;line-height:1;padding:0;cursor:pointer}
+.clear-all{font-size:.8rem;color:var(--mid);cursor:pointer;font-weight:500;transition:color .2s}
+.clear-all:hover{color:var(--danger)}
+.jobs-list-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pagination{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:38px}
+.page-btn{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#fff;border:1.5px solid var(--border);font-size:.86rem;color:var(--mid);cursor:pointer;transition:all .2s;font-weight:600}
+.page-btn:hover{border-color:var(--primary);color:var(--primary)}
+.page-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.page-btn.nav{padding:0 12px;width:auto}
+
+/* COMPANIES PAGE */
+.companies-hero{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-2) 100%);padding:80px 5%;text-align:center}
+.companies-hero h1{color:#fff;font-size:2.7rem;margin-bottom:15px}
+.companies-hero p{color:rgba(255,255,255,.6);font-size:.97rem;max-width:500px;margin:0 auto 34px}
+.companies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1280px;margin:0 auto;padding:56px 5%}
+.company-card{background:#fff;border-radius:var(--radius-lg);border:1.5px solid var(--border);padding:26px;transition:all .3s;cursor:pointer}
+.company-card:hover{transform:translateY(-6px);box-shadow:var(--hover-shadow);border-color:var(--primary)}
+.company-cover{height:76px;margin:-26px -26px 18px;border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.company-logo-wrap{width:52px;height:52px;border-radius:12px;background:#fff;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:12px}
+.company-name-big{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:3px}
+.company-meta{font-size:.78rem;color:var(--light);margin-bottom:13px}
+.company-stats{display:flex;gap:18px;padding-top:14px;border-top:1px solid var(--border)}
+.c-stat-num{font-family:'Syne',sans-serif;font-weight:700;font-size:.97rem}
+.c-stat-label{font-size:.7rem;color:var(--light)}
+.view-jobs-btn{width:100%;text-align:center;padding:10px;background:var(--primary-light);color:var(--primary);border-radius:8px;font-size:.83rem;font-weight:600;transition:all .2s;margin-top:14px;display:block;cursor:pointer}
+.view-jobs-btn:hover{background:var(--primary);color:#fff}
+
+/* SALARIES */
+.salaries-hero{padding:80px 5% 56px;background:#fff;text-align:center}
+.salaries-hero h1{font-size:2.7rem;margin-bottom:15px}
+.salary-table-wrap{max-width:1000px;margin:0 auto;padding:0 5% 80px}
+.salary-table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--card-shadow)}
+.salary-table thead th{padding:14px 18px;background:var(--dark);color:#fff;font-family:'Syne',sans-serif;font-size:.82rem;text-align:left;font-weight:700}
+.salary-table tbody tr{border-bottom:1px solid var(--border);transition:background .2s;cursor:pointer}
+.salary-table tbody tr:hover{background:var(--primary-light)}
+.salary-table td{padding:14px 18px;font-size:.86rem}
+.salary-bar-wrap{display:flex;align-items:center;gap:11px}
+.salary-bar{height:7px;background:var(--primary);border-radius:4px;min-width:18px;transition:width .8s ease}
+.salary-range{font-weight:600;color:var(--primary);font-family:'Syne',sans-serif;white-space:nowrap}
+.salary-growth{color:var(--success);font-weight:600;font-size:.8rem}
+.salary-growth.neg{color:var(--danger)}
+
+/* CAREER ADVICE */
+.advice-hero{padding:80px 5% 56px;background:linear-gradient(135deg,#f0f4ff 0%,#fafbff 100%);text-align:center}
+.advice-hero h1{font-size:2.7rem;margin-bottom:15px}
+.advice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1280px;margin:0 auto;padding:56px 5%}
+.advice-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1.5px solid var(--border);transition:all .3s;cursor:pointer}
+.advice-card:hover{transform:translateY(-5px);box-shadow:var(--hover-shadow)}
+.advice-img{height:190px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.advice-body{padding:22px}
+.advice-category{display:inline-block;padding:3px 10px;background:var(--primary-light);color:var(--primary);border-radius:50px;font-size:.73rem;font-weight:600;margin-bottom:9px}
+.advice-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:9px;line-height:1.4}
+.advice-meta{display:flex;align-items:center;justify-content:space-between;font-size:.76rem;color:var(--light)}
+.read-more{color:var(--primary);font-weight:600;font-size:.81rem;display:flex;align-items:center;gap:4px;margin-top:13px}
+
+/* AUTH */
+.auth-layout{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:#fff}
+.auth-left{background:linear-gradient(135deg,var(--primary) 0%,#0d2d8a 100%);padding:56px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.auth-left::before{content:'';position:absolute;width:450px;height:450px;background:rgba(255,255,255,.04);border-radius:50%;bottom:-180px;right:-180px}
+.auth-left h2{font-size:2.2rem;color:#fff;margin-bottom:14px;line-height:1.3}
+.auth-left p{color:rgba(255,255,255,.7);font-size:.97rem;margin-bottom:36px;line-height:1.7}
+.auth-features{list-style:none}
+.auth-features li{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.85);font-size:.88rem;margin-bottom:13px}
+.auth-features li::before{content:'✓';width:21px;height:21px;background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.73rem;flex-shrink:0}
+.auth-right{display:flex;align-items:center;justify-content:center;padding:56px;overflow-y:auto}
+.auth-form-wrap{width:100%;max-width:430px}
+.auth-logo{display:flex;align-items:center;gap:9px;font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;margin-bottom:36px}
+.auth-title{font-size:1.75rem;font-weight:800;margin-bottom:5px}
+.auth-sub{color:var(--mid);font-size:.88rem;margin-bottom:26px}
+.auth-sub a{color:var(--primary);font-weight:600;cursor:pointer}
+.auth-sub a:hover{text-decoration:underline}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:.81rem;font-weight:600;color:var(--dark);margin-bottom:7px}
+.form-input{width:100%;padding:11px 15px;border:1.5px solid var(--border);border-radius:10px;font-size:.9rem;color:var(--dark);outline:none;transition:all .2s;background:var(--bg)}
+.form-input:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.form-input::placeholder{color:var(--light)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.form-forgot{font-size:.8rem;color:var(--primary);font-weight:600;text-align:right;display:block;margin-top:-8px;margin-bottom:16px;cursor:pointer}
+.btn-auth{width:100%;justify-content:center;padding:13px;font-size:.93rem;border-radius:10px;margin-bottom:14px}
+.divider{display:flex;align-items:center;gap:12px;margin:16px 0}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.divider span{font-size:.78rem;color:var(--light);font-weight:500}
+.btn-google{width:100%;padding:12px;border:1.5px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;gap:11px;font-size:.9rem;font-weight:600;color:var(--dark);background:#fff;cursor:pointer;transition:all .25s}
+.btn-google:hover{border-color:var(--primary);background:var(--primary-light);color:var(--primary);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.07)}
+.terms-text{font-size:.74rem;color:var(--light);text-align:center;margin-top:14px;line-height:1.6}
+.terms-text a{color:var(--primary)}
+.form-section-title{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:1px;margin:20px 0 14px;padding-top:16px;border-top:1px solid var(--border)}
+.form-textarea{width:100%;padding:11px 15px;border:1.5px solid var(--border);border-radius:10px;font-size:.88rem;color:var(--dark);outline:none;resize:vertical;min-height:90px;transition:all .2s;background:var(--bg);font-family:'DM Sans',sans-serif}
+.form-textarea:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.file-upload-area{border:2px dashed var(--border);border-radius:10px;padding:20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);margin-bottom:4px}
+.file-upload-area:hover{border-color:var(--primary);background:var(--primary-light)}
+.file-upload-area.has-file{border-color:var(--success);background:#f0fdf4}
+.file-upload-area .upload-icon{font-size:1.8rem;margin-bottom:6px}
+.file-upload-area .upload-label{font-weight:600;font-size:.86rem;margin-bottom:3px}
+.file-upload-area .upload-sub{font-size:.75rem;color:var(--light)}
+.steps-indicator{display:flex;align-items:center;gap:0;margin-bottom:28px}
+.step{display:flex;align-items:center;gap:8px;flex:1}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--border);color:var(--light);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;transition:all .3s;flex-shrink:0}
+.step.active .step-num{background:var(--primary);color:#fff}
+.step.done .step-num{background:var(--success);color:#fff}
+.step-label{font-size:.75rem;font-weight:600;color:var(--light);transition:color .3s}
+.step.active .step-label{color:var(--primary)}
+.step.done .step-label{color:var(--success)}
+.step-line{flex:1;height:2px;background:var(--border);margin:0 8px;transition:background .3s}
+.step.done+.step-line{background:var(--success)}
+
+/* POST JOB */
+.post-job-wrap{max-width:800px;margin:0 auto;padding:56px 5%}
+.post-job-header{margin-bottom:36px}
+.post-job-header h1{font-size:2.1rem;margin-bottom:7px}
+.form-sec{background:#fff;border-radius:var(--radius-lg);border:1.5px solid var(--border);padding:30px;margin-bottom:18px}
+.form-sec h3{font-family:'Syne',sans-serif;font-weight:700;font-size:.97rem;margin-bottom:18px;padding-bottom:13px;border-bottom:1px solid var(--border)}
+.form-select{width:100%;padding:11px 15px;border:1.5px solid var(--border);border-radius:10px;font-size:.88rem;color:var(--dark);outline:none;background:var(--bg);cursor:pointer;transition:border-color .2s}
+.form-select:focus{border-color:var(--primary)}
+.pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+.pricing-card{border:1.5px solid var(--border);border-radius:var(--radius);padding:18px;cursor:pointer;transition:all .2s;text-align:center}
+.pricing-card:hover,.pricing-card.selected{border-color:var(--primary);background:var(--primary-light)}
+.pricing-card h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:3px}
+.pricing-card .price{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--primary)}
+.pricing-card p{font-size:.77rem;color:var(--mid);margin-top:5px}
+
+/* DASHBOARD */
+.dashboard-layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 68px)}
+.sidebar{background:#fff;border-right:1px solid var(--border);padding:26px 14px;position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto;display:flex;flex-direction:column}
+.sidebar-nav{display:flex;flex-direction:column;gap:3px}
+.sidebar-item{display:flex;align-items:center;gap:9px;padding:10px 13px;border-radius:10px;font-size:.86rem;font-weight:500;color:var(--mid);cursor:pointer;transition:all .22s}
+.sidebar-item:hover{background:var(--bg);color:var(--dark)}
+.sidebar-item.active{background:var(--primary-light);color:var(--primary);font-weight:600}
+.sidebar-item .icon{font-size:.97rem;width:20px;text-align:center}
+.sidebar-badge{background:var(--danger);color:#fff;border-radius:50px;padding:1px 6px;font-size:.68rem;margin-left:auto;font-weight:700}
+.sidebar-promo{background:var(--primary-light);border-radius:var(--radius);padding:14px;margin-top:18px}
+.sidebar-promo h6{font-family:'Syne',sans-serif;font-size:.73rem;color:var(--primary);margin-bottom:5px;display:flex;align-items:center;gap:4px;font-weight:700}
+.sidebar-promo p{font-size:.74rem;color:var(--mid);margin-bottom:9px;line-height:1.5}
+.sidebar-signout{display:flex;align-items:center;gap:9px;padding:10px 13px;border-radius:10px;color:var(--danger);font-size:.83rem;font-weight:500;cursor:pointer;margin-top:auto;transition:all .2s}
+.sidebar-signout:hover{background:#fef2f2}
+.dash-main{padding:34px;background:var(--bg);overflow-y:auto}
+.dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.profile-banner{background:#fff;border-radius:var(--radius-lg);border:1.5px solid var(--border);margin-bottom:22px;overflow:hidden;animation:fadeInUp .5s ease both}
+.profile-cover{height:88px;background:linear-gradient(135deg,#dbeafe 0%,#ede9fe 50%,#d1fae5 100%);background-size:200% 200%;animation:gradientMove 6s ease infinite}
+.profile-info{padding:0 26px 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+.profile-avatar-wrap{margin-top:-34px}
+.profile-avatar{width:70px;height:70px;border-radius:50%;background:var(--primary);border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;color:#fff;box-shadow:0 4px 14px rgba(26,86,219,.3)}
+.profile-text h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem}
+.profile-text p{font-size:.83rem;color:var(--mid)}
+.profile-actions{display:flex;gap:9px}
+.stats-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.stat-card{background:#fff;border-radius:var(--radius);border:1.5px solid var(--border);padding:18px;text-align:center;transition:all .3s;animation:countUp .5s ease both}
+.stat-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:var(--card-shadow)}
+.stat-card .num{font-family:'Syne',sans-serif;font-size:1.75rem;font-weight:800;color:var(--dark)}
+.stat-card .num.blue{color:var(--primary)}
+.stat-card .label{font-size:.76rem;color:var(--light);margin-top:3px}
+.dash-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+.dash-card{background:#fff;border-radius:var(--radius-lg);border:1.5px solid var(--border);padding:22px;animation:fadeInUp .5s ease both}
+.dash-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.dash-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.97rem}
+.view-all-link{font-size:.8rem;color:var(--primary);font-weight:600;cursor:pointer;display:flex;align-items:center;gap:3px;transition:opacity .2s}
+.view-all-link:hover{opacity:.7}
+.application-row{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid var(--border);transition:all .2s;cursor:pointer}
+.application-row:last-child{border-bottom:none}
+.application-row:hover{background:var(--bg);margin:0 -22px;padding:13px 22px;border-radius:8px}
+.app-icon{width:36px;height:36px;border-radius:9px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:var(--primary);flex-shrink:0;font-family:'Syne',sans-serif}
+.app-info{flex:1}
+.app-title{font-weight:600;font-size:.88rem}
+.app-company{font-size:.76rem;color:var(--light)}
+.app-date{font-size:.73rem;color:var(--light);white-space:nowrap}
+.status-badge{padding:3px 10px;border-radius:50px;font-size:.7rem;font-weight:600;white-space:nowrap}
+.status-badge.interview{background:#dbeafe;color:#1d4ed8}
+.status-badge.pending{background:#fef9c3;color:#a16207}
+.status-badge.rejected{background:#fee2e2;color:#dc2626}
+.status-badge.offer{background:#dcfce7;color:#16a34a}
+.strength-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.strength-label{font-weight:600;font-size:.88rem}
+.strength-pct{font-family:'Syne',sans-serif;font-weight:700;color:var(--primary)}
+.strength-bar{height:7px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:14px}
+.strength-fill{height:100%;background:linear-gradient(90deg,var(--primary),#60a5fa);border-radius:4px;transition:width 1.2s ease}
+.strength-item{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);font-size:.81rem;color:var(--mid)}
+.strength-item:last-child{border-bottom:none}
+.upload-box{border:2px dashed var(--border);border-radius:var(--radius);padding:22px;text-align:center;cursor:pointer;transition:all .2s;margin-top:14px}
+.upload-box:hover{border-color:var(--primary);background:var(--primary-light)}
+.upload-icon{font-size:1.8rem;margin-bottom:6px}
+.upload-label{font-weight:600;font-size:.86rem;margin-bottom:3px}
+.upload-sub{font-size:.73rem;color:var(--light)}
+.saved-jobs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+.saved-job-card{border:1.5px solid var(--border);border-radius:var(--radius);padding:13px;cursor:pointer;transition:all .2s}
+.saved-job-card:hover{border-color:var(--primary);background:var(--primary-light)}
+.saved-job-card .company-initial{width:32px;height:32px;border-radius:8px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.77rem;color:var(--primary);margin-bottom:9px}
+.saved-job-badge{font-size:.68rem;color:var(--mid);background:var(--bg);padding:2px 7px;border-radius:50px;border:1px solid var(--border);margin-bottom:7px;display:inline-block}
+.saved-job-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.86rem;margin-bottom:2px}
+.saved-job-company{font-size:.73rem;color:var(--light);margin-bottom:7px}
+.saved-job-salary{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem}
+
+/* PROFILE EDIT FORM */
+.profile-edit-section{background:#fff;border-radius:var(--radius-lg);border:1.5px solid var(--border);padding:28px;margin-bottom:18px;animation:fadeInUp .5s ease both}
+.profile-edit-section h3{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.skill-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;background:var(--primary-light);color:var(--primary);border-radius:50px;font-size:.78rem;font-weight:600;margin:3px;border:1.5px solid rgba(26,86,219,.15)}
+.skill-tag button{background:none;color:var(--primary);font-size:.9rem;cursor:pointer;line-height:1}
+.skill-input-wrap{display:flex;gap:8px;margin-top:10px}
+.add-skill-btn{padding:9px 16px;background:var(--primary);color:#fff;border-radius:9px;font-size:.83rem;font-weight:600;white-space:nowrap;transition:all .2s}
+.add-skill-btn:hover{background:var(--primary-dark)}
+.exp-card{background:var(--bg);border-radius:var(--radius);padding:16px;margin-bottom:12px;border:1.5px solid var(--border);position:relative}
+.exp-card-title{font-weight:700;font-size:.92rem}
+.exp-card-sub{font-size:.8rem;color:var(--mid)}
+.exp-remove{position:absolute;top:12px;right:12px;background:none;color:var(--light);font-size:.95rem;cursor:pointer;transition:color .2s}
+.exp-remove:hover{color:var(--danger)}
+
+/* MESSAGES */
+.messages-layout{display:grid;grid-template-columns:280px 1fr;gap:0;height:calc(100vh - 68px)}
+.messages-list{border-right:1px solid var(--border);overflow-y:auto;background:#fff}
+.msg-search{padding:16px;border-bottom:1px solid var(--border)}
+.msg-search input{width:100%;padding:9px 13px;border:1.5px solid var(--border);border-radius:9px;font-size:.86rem;outline:none}
+.msg-search input:focus{border-color:var(--primary)}
+.msg-item{display:flex;align-items:flex-start;gap:11px;padding:14px 16px;cursor:pointer;transition:background .2s;border-bottom:1px solid var(--border)}
+.msg-item:hover,.msg-item.active{background:var(--primary-light)}
+.msg-avatar{width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0}
+.msg-name{font-weight:600;font-size:.88rem;margin-bottom:2px}
+.msg-preview{font-size:.76rem;color:var(--light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:170px}
+.msg-time{font-size:.7rem;color:var(--light);margin-left:auto;flex-shrink:0}
+.msg-unread-dot{width:8px;height:8px;background:var(--primary);border-radius:50%;margin-top:4px;flex-shrink:0}
+.chat-area{display:flex;flex-direction:column;background:var(--bg)}
+.chat-header{padding:18px 22px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.chat-header-name{font-weight:700;font-size:.97rem}
+.chat-header-sub{font-size:.76rem;color:var(--success)}
+.chat-messages{flex:1;padding:22px;overflow-y:auto;display:flex;flex-direction:column;gap:14px}
+.chat-msg{max-width:70%;display:flex;flex-direction:column;gap:4px}
+.chat-msg.sent{align-self:flex-end;align-items:flex-end}
+.chat-msg.recv{align-self:flex-start}
+.chat-bubble{padding:11px 15px;border-radius:16px;font-size:.88rem;line-height:1.5}
+.chat-msg.sent .chat-bubble{background:var(--primary);color:#fff;border-bottom-right-radius:4px}
+.chat-msg.recv .chat-bubble{background:#fff;color:var(--dark);border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.chat-time{font-size:.7rem;color:var(--light)}
+.chat-input-area{padding:16px 22px;background:#fff;border-top:1px solid var(--border);display:flex;gap:10px;align-items:center}
+.chat-input{flex:1;padding:11px 16px;border:1.5px solid var(--border);border-radius:24px;font-size:.9rem;outline:none;transition:border-color .2s}
+.chat-input:focus{border-color:var(--primary)}
+.chat-send{width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;transition:all .2s;flex-shrink:0}
+.chat-send:hover{background:var(--primary-dark);transform:scale(1.08)}
+
+/* SEARCH RESULTS */
+.search-results-panel{position:absolute;top:100%;left:0;right:0;background:#fff;border:1.5px solid var(--border);border-radius:0 0 14px 14px;box-shadow:0 12px 40px rgba(0,0,0,.12);z-index:100;max-height:380px;overflow-y:auto;display:none;animation:slideDown .2s ease}
+.search-results-panel.show{display:block}
+.search-result-item{display:flex;align-items:center;gap:13px;padding:13px 18px;cursor:pointer;transition:background .2s;border-bottom:1px solid var(--border)}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--primary-light)}
+.sri-icon{width:36px;height:36px;border-radius:9px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:var(--primary);border:1.5px solid var(--border);flex-shrink:0;font-family:'Syne',sans-serif}
+.sri-title{font-weight:600;font-size:.88rem}
+.sri-meta{font-size:.76rem;color:var(--light)}
+.sri-salary{font-family:'Syne',sans-serif;font-weight:700;font-size:.83rem;color:var(--primary);margin-left:auto;white-space:nowrap}
+.search-results-header{padding:10px 18px;font-size:.74rem;font-weight:700;color:var(--light);text-transform:uppercase;letter-spacing:1px;background:var(--bg);border-bottom:1px solid var(--border)}
+.search-no-results{padding:28px;text-align:center;color:var(--mid);font-size:.88rem}
+.search-wrap{position:relative}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;z-index:9999;background:var(--dark);color:#fff;padding:13px 19px;border-radius:12px;display:flex;align-items:center;gap:11px;font-size:.86rem;font-weight:500;box-shadow:0 8px 30px rgba(0,0,0,.2);transform:translateY(100px);opacity:0;transition:all .4s cubic-bezier(.175,.885,.32,1.275);max-width:340px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.toast-success{background:#065f46}
+.toast.toast-error{background:#991b1b}
+.toast.toast-info{background:var(--primary-dark)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.52);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:var(--radius-lg);padding:34px;max-width:560px;width:100%;transform:translateY(22px) scale(.97);transition:all .3s;max-height:88vh;overflow-y:auto}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700}
+.modal-close{background:none;border:none;font-size:1.35rem;color:var(--light);cursor:pointer;transition:color .2s;padding:0}
+.modal-close:hover{color:var(--dark)}
+
+/* NOTIFICATIONS PANEL */
+.notif-panel{position:absolute;top:calc(100% + 8px);right:0;width:320px;background:#fff;border-radius:var(--radius-lg);box-shadow:0 12px 40px rgba(0,0,0,.15);border:1.5px solid var(--border);z-index:500;display:none;animation:slideDown .22s ease}
+.notif-panel.show{display:block}
+.notif-header{padding:14px 18px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;display:flex;justify-content:space-between;align-items:center}
+.notif-mark{font-size:.76rem;color:var(--primary);cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif}
+.notif-item{display:flex;align-items:flex-start;gap:11px;padding:13px 18px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .2s}
+.notif-item:hover{background:var(--bg)}
+.notif-item.unread{background:var(--primary-light)}
+.notif-icon{width:34px;height:34px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.notif-text{font-size:.82rem;line-height:1.5}
+.notif-time{font-size:.72rem;color:var(--light);margin-top:3px}
+
+/* CHAT BOT (legacy, kept for compatibility) */
+.floating-chat{position:fixed;bottom:28px;right:28px;z-index:990}
+.chat-btn{width:50px;height:50px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.25rem;cursor:pointer;box-shadow:0 4px 20px rgba(26,86,219,.4);transition:all .3s;animation:pulse2 2.5s infinite}
+.chat-btn:hover{transform:scale(1.1)}
+
+/* AI CHATBOT WIDGET */
+.hyr-bot-wrap{position:fixed;bottom:94px;right:28px;z-index:9990;display:none;flex-direction:column;width:370px;height:520px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(15,23,42,.18);border:1.5px solid var(--border);overflow:hidden;animation:scaleIn .22s ease}
+.hyr-bot-wrap.open{display:flex}
+.hyr-bot-header{background:linear-gradient(135deg,var(--primary) 0%,#1341b0 100%);padding:14px 18px;display:flex;align-items:center;gap:11px;flex-shrink:0}
+.hyr-bot-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.hyr-bot-info{flex:1}
+.hyr-bot-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;color:#fff}
+.hyr-bot-status{font-size:.72rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:4px}
+.hyr-bot-status::before{content:'';width:6px;height:6px;background:#4ade80;border-radius:50%;display:inline-block}
+.hyr-bot-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.hyr-bot-close:hover{background:rgba(255,255,255,.3)}
+.hyr-bot-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.hyr-bot-messages::-webkit-scrollbar{width:4px}
+.hyr-bot-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.bot-msg{display:flex;gap:8px;align-items:flex-end}
+.bot-msg.user{flex-direction:row-reverse}
+.bot-bubble{max-width:82%;padding:10px 13px;border-radius:16px;font-size:.84rem;line-height:1.55;word-break:break-word}
+.bot-msg.assistant .bot-bubble{background:#fff;color:var(--dark);border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.bot-msg.user .bot-bubble{background:var(--primary);color:#fff;border-bottom-right-radius:4px}
+.bot-msg-avatar{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
+.bot-msg.assistant .bot-msg-avatar{background:var(--primary-light);color:var(--primary)}
+.bot-msg.user .bot-msg-avatar{background:var(--primary);color:#fff}
+.bot-typing{display:flex;gap:4px;align-items:center;padding:10px 13px;background:#fff;border-radius:16px;border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.07);width:fit-content}
+.bot-typing span{width:6px;height:6px;background:var(--light);border-radius:50%;animation:botTyping 1.2s ease-in-out infinite}
+.bot-typing span:nth-child(2){animation-delay:.2s}
+.bot-typing span:nth-child(3){animation-delay:.4s}
+@keyframes botTyping{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.hyr-bot-chips{padding:8px 14px;display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid var(--border);background:#fff;flex-shrink:0}
+.bot-chip{padding:5px 11px;border-radius:50px;background:var(--primary-light);color:var(--primary);font-size:.73rem;font-weight:600;cursor:pointer;border:1.5px solid rgba(26,86,219,.15);transition:all .2s;white-space:nowrap}
+.bot-chip:hover{background:var(--primary);color:#fff}
+.hyr-bot-input-row{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--border);background:#fff;flex-shrink:0;align-items:center}
+.hyr-bot-input{flex:1;border:1.5px solid var(--border);border-radius:24px;padding:9px 14px;font-size:.86rem;outline:none;transition:border-color .2s;font-family:'DM Sans',sans-serif}
+.hyr-bot-input:focus{border-color:var(--primary)}
+.hyr-bot-send{width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:all .2s;flex-shrink:0}
+.hyr-bot-send:hover{background:var(--primary-dark);transform:scale(1.08)}
+.hyr-bot-send:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.hyr-bot-fab{position:fixed;bottom:28px;right:28px;z-index:9991;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#1341b0);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;box-shadow:0 4px 20px rgba(26,86,219,.45);transition:all .3s;animation:pulse2 2.5s infinite;border:none}
+.hyr-bot-fab:hover{transform:scale(1.1)}
+.hyr-bot-badge{position:absolute;top:-3px;right:-3px;width:18px;height:18px;background:var(--danger);border-radius:50%;font-size:.62rem;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+
+/* MISC */
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+.section-divider{height:1px;background:var(--border);margin:0 5%}
+.empty-state{text-align:center;padding:48px 20px;color:var(--mid)}
+.empty-state .empty-icon{font-size:3rem;margin-bottom:12px}
+.empty-state h4{font-family:'Syne',sans-serif;font-size:1.05rem;margin-bottom:6px}
+.google-loading{display:flex;align-items:center;gap:8px}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .find-jobs-layout,.dashboard-layout{grid-template-columns:1fr}
+  .filters-panel,.sidebar{display:none}
+  .category-grid{grid-template-columns:repeat(2,1fr)}
+  .jobs-list-grid,.companies-grid,.advice-grid{grid-template-columns:repeat(2,1fr)}
+  .auth-layout{grid-template-columns:1fr}
+  .auth-left{display:none}
+  .dash-grid{grid-template-columns:1fr}
+  .stats-cards{grid-template-columns:repeat(2,1fr)}
+  .jobs-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .messages-layout{grid-template-columns:1fr}
+  .messages-list{display:none}
+}
+@media(max-width:600px){
+  .category-grid,.jobs-list-grid,.companies-grid,.advice-grid,.jobs-grid,.saved-jobs-grid{grid-template-columns:1fr}
+  .cta-banner{flex-direction:column;text-align:center;padding:34px 22px}
+  .stats-cards{grid-template-columns:repeat(2,1fr)}
+  .pricing-cards{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span id="toast-icon">✓</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<!-- FLOATING CHAT (legacy, hidden) -->
+<div class="floating-chat" id="floatingChat" style="display:none">
+  <div class="chat-btn" onclick="showPage('messages')" title="Messages">💬</div>
+</div>
+
+<!-- AI CHATBOT WIDGET -->
+<div class="hyr-bot-wrap" id="hyrBot">
+  <div class="hyr-bot-header">
+    <div class="hyr-bot-avatar">⚡</div>
+    <div class="hyr-bot-info">
+      <div class="hyr-bot-name">HyrUp AI Assistant</div>
+      <div class="hyr-bot-status">Online · Powered by Claude</div>
+    </div>
+    <button class="hyr-bot-close" onclick="toggleBot()" title="Close">✕</button>
+  </div>
+  <div class="hyr-bot-messages" id="botMessages"></div>
+  <div class="hyr-bot-chips" id="botChips">
+    <span class="bot-chip" onclick="botChipClick(this)">Find jobs for me</span>
+    <span class="bot-chip" onclick="botChipClick(this)">Resume tips</span>
+    <span class="bot-chip" onclick="botChipClick(this)">Salary insights</span>
+    <span class="bot-chip" onclick="botChipClick(this)">Interview prep</span>
+  </div>
+  <div class="hyr-bot-input-row">
+    <input class="hyr-bot-input" id="botInput" placeholder="Ask me anything about your career..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();botSend()}">
+    <button class="hyr-bot-send" id="botSendBtn" onclick="botSend()" title="Send">➤</button>
+  </div>
+</div>
+
+<!-- AI CHATBOT FAB -->
+<button class="hyr-bot-fab" id="hyrBotFab" onclick="toggleBot()" title="Chat with HyrUp AI">
+  <span id="botFabIcon">⚡</span>
+  <span class="hyr-bot-badge" id="botBadge" style="display:none">1</span>
+</button>
+
+<!-- JOB MODAL -->
+<div class="modal-overlay" id="jobModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modal-job-title">Job Title</div>
+        <div style="font-size:.83rem;color:var(--mid);margin-top:3px" id="modal-company">Company</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('jobModal')">✕</button>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:18px" id="modal-tags"></div>
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.25rem;color:var(--primary);margin-bottom:18px" id="modal-salary"></div>
+    <div style="margin-bottom:18px">
+      <h4 style="font-family:'Syne',sans-serif;font-size:.88rem;margin-bottom:9px">About the Role</h4>
+      <p style="font-size:.86rem;color:var(--mid);line-height:1.7" id="modal-desc"></p>
+    </div>
+    <div style="margin-bottom:22px">
+      <h4 style="font-family:'Syne',sans-serif;font-size:.88rem;margin-bottom:9px">Requirements</h4>
+      <ul style="font-size:.83rem;color:var(--mid);line-height:1.9;padding-left:18px" id="modal-reqs"></ul>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-primary btn-auth" onclick="applyJob()">Apply Now 🚀</button>
+      <button class="btn btn-outline btn-auth" style="background:var(--bg)" onclick="saveJobModal()">🔖 Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon">⚡</div> HyrUp
+    </div>
+    <div class="nav-links">
+      <div class="nav-link" id="nl-find-jobs" onclick="showPage('find-jobs')">Find Jobs</div>
+      <div class="nav-link" id="nl-companies" onclick="showPage('companies')">Companies</div>
+      <div class="nav-link" id="nl-salaries" onclick="showPage('salaries')">Salaries</div>
+      <div class="nav-link" id="nl-career-advice" onclick="showPage('career-advice')">Career Advice</div>
+    </div>
+    <div class="nav-actions" id="nav-actions">
+      <button class="btn btn-outline btn-sm" onclick="showPage('signin')">Sign In</button>
+      <button class="btn btn-primary btn-sm" onclick="showPage('post-job')">Post a Job</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HOME PAGE ========== -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="hero-blob blob-3"></div>
+    <div class="hero-badge anim-up">🏆 #1 Platform for Tech Careers</div>
+    <h1 class="anim-up d1">Connect With The <span>Perfect</span><br>Job Opportunity.</h1>
+    <p class="anim-up d2">Find roles at the world's most innovative companies. HyrUp is where 2M+ professionals accelerate their career growth.</p>
+    <div class="search-wrap anim-up d3" style="max-width:700px;margin:0 auto 26px">
+      <div class="search-bar" style="margin:0">
+        <span style="font-size:.97rem;color:var(--light)">🔍</span>
+        <input class="search-input" id="home-search" placeholder="Job title, keywords, or company" oninput="handleSearch('home-search','home-results')" autocomplete="off">
+        <div class="search-divider"></div>
+        <span style="font-size:.88rem;color:var(--light)">📍</span>
+        <input class="search-location" id="home-loc" placeholder="City or Remote">
+        <button class="btn btn-primary btn-sm" onclick="doSearch()">Search Jobs</button>
+      </div>
+      <div class="search-results-panel" id="home-results"></div>
+    </div>
+    <div class="hero-tags anim-up d4">
+      <div class="hero-tag">✅ Verified Employers</div>
+      <div class="hero-tag">⚡ One-Click Apply</div>
+      <div class="hero-tag">💰 Salary Transparency</div>
+    </div>
+    <div style="margin-top:56px" class="anim-up d5">
+      <p style="font-size:.76rem;text-transform:uppercase;letter-spacing:2px;color:var(--light);font-weight:600;margin-bottom:14px">Empowering Talent at World Class Teams</p>
+      <div class="logos-row">
+        <div class="logo-pill">Google</div>
+        <div class="logo-pill">Amazon</div>
+        <div class="logo-pill">Stripe</div>
+        <div class="logo-pill">Airbnb</div>
+        <div class="logo-pill">Figma</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section reveal">
+    <div class="section-header">
+      <div><h2 class="section-title">Explore by Category</h2><p class="section-sub">Narrow your search to your specific area of expertise.</p></div>
+      <div class="link-btn" onclick="showPage('find-jobs')">Browse All →</div>
+    </div>
+    <div class="category-grid">
+      <div class="category-card" onclick="filterByCategory('Software Engineering')"><div class="cat-icon">💻</div><div class="cat-name">Software Engineering</div><div class="cat-count">1,245 Open Positions</div></div>
+      <div class="category-card" onclick="filterByCategory('Product Design')"><div class="cat-icon">🎨</div><div class="cat-name">Product Design</div><div class="cat-count">830 Open Positions</div></div>
+      <div class="category-card" onclick="filterByCategory('Data Science')"><div class="cat-icon">📊</div><div class="cat-name">Data Science</div><div class="cat-count">620 Open Positions</div></div>
+      <div class="category-card" onclick="filterByCategory('Product Management')"><div class="cat-icon">📱</div><div class="cat-name">Product Management</div><div class="cat-count">430 Open Positions</div></div>
+      <div class="category-card" onclick="filterByCategory('Marketing')"><div class="cat-icon">📣</div><div class="cat-name">Marketing & Sales</div><div class="cat-count">860 Open Positions</div></div>
+      <div class="category-card" onclick="filterByCategory('Content')"><div class="cat-icon">✍️</div><div class="cat-name">Content Strategy</div><div class="cat-count">310 Open Positions</div></div>
+      <div class="category-card" onclick="filterByCategory('Operations')"><div class="cat-icon">⚙️</div><div class="cat-name">Operations</div><div class="cat-count">540 Open Positions</div></div>
+      <div class="category-card" onclick="filterByCategory('Executive')"><div class="cat-icon">👑</div><div class="cat-name">Executive Roles</div><div class="cat-count">125 Open Positions</div></div>
+    </div>
+  </div>
+
+  <div class="cta-banner reveal">
+    <div class="cta-text"><h2>Hire Top Talent Today.</h2><p>Join 50,000+ companies hiring through HyrUp. Get your jobs in front of the right people.</p></div>
+    <div class="cta-actions">
+      <button class="btn btn-white btn-lg" onclick="showPage('post-job')">Post a Job Now</button>
+      <button class="btn btn-lg" style="border:1.5px solid rgba(255,255,255,.4);color:#fff;background:transparent" onclick="showPage('companies')">Learn More</button>
+    </div>
+  </div>
+
+  <div class="section reveal" style="margin-top:0">
+    <div class="section-header">
+      <div><div class="hero-badge" style="margin-bottom:10px;animation:none">🔥 Featured Listings</div><h2 class="section-title">Jobs Picking Up Steam</h2><p class="section-sub">High engagement and competitive packages this week.</p></div>
+    </div>
+    <div class="jobs-grid" id="home-featured-jobs"></div>
+    <div style="text-align:center;margin-top:30px">
+      <button class="btn btn-outline btn-lg" onclick="showPage('find-jobs')">Explore All 12,456 Openings →</button>
+    </div>
+  </div>
+
+  <section class="testimonial-section reveal">
+    <div class="testimonial-inner">
+      <div style="position:relative">
+        <div class="person-placeholder">👤</div>
+        <div class="floating-card card-1"><div class="fc-icon">⭐</div><div><div class="fc-label">Platform Rating</div><div class="fc-value">4.9 / 5.0</div></div></div>
+        <div class="floating-card card-2"><div class="fc-icon">✅</div><div><div class="fc-label">Jobs Posted Monthly</div><div class="fc-value">150k+</div></div></div>
+      </div>
+      <div>
+        <div class="hero-badge" style="animation:none;margin-bottom:18px;display:inline-flex">Join Millions Finding Success</div>
+        <div class="testimonial-quote"><em>"HyrUp changed my life.</em> I went from application fatigue to 3 high-value offers in just 2 weeks."</div>
+        <div class="testimonial-author" style="display:flex;align-items:center;gap:11px;margin-bottom:30px">
+          <div class="author-avatar">SC</div>
+          <div><div style="font-weight:600;font-size:.93rem">Sarah Chen</div><div style="font-size:.78rem;color:var(--light)">Software Engineer at Stripe</div></div>
+        </div>
+        <div style="display:flex;gap:38px;margin-bottom:34px">
+          <div><div style="font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800">150k<span style="color:var(--primary)">+</span></div><div style="font-size:.83rem;color:var(--mid)">Jobs Posted Monthly</div></div>
+          <div><div style="font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800">2.4M<span style="color:var(--primary)">+</span></div><div style="font-size:.83rem;color:var(--mid)">Active Job Seekers</div></div>
+        </div>
+        <button class="btn btn-primary btn-lg" onclick="showPage('signup')">Get Started for Free 🚀</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="color:#fff"><div class="logo-icon">⚡</div> HyrUp</div>
+        <p>The ultimate platform for talent and opportunity. We help professionals find their dream jobs.</p>
+        <div class="footer-socials">
+          <div class="social-btn" onclick="toast('Following on Twitter! 🐦')">𝕏</div>
+          <div class="social-btn" onclick="toast('Following on LinkedIn! 💼')">in</div>
+          <div class="social-btn" onclick="toast('Following on Instagram! 📸')">ig</div>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Product</h5><ul><li><a onclick="showPage('find-jobs')">Browse Jobs</a></li><li><a onclick="showPage('companies')">Companies</a></li><li><a onclick="showPage('salaries')">Salaries</a></li><li><a onclick="showPage('career-advice')">Career Advice</a></li></ul></div>
+      <div class="footer-col"><h5>Support</h5><ul><li><a onclick="toast('Help center coming soon!')">Help Center</a></li><li><a onclick="toast('Contact: hi@hryup.com')">Contact Us</a></li><li><a onclick="toast('Blog launching soon!')">Blog</a></li><li><a onclick="toast('Accessibility tools')">Accessibility</a></li></ul></div>
+      <div class="footer-col"><h5>Legal</h5><ul><li><a onclick="toast('Privacy Policy')">Privacy Policy</a></li><li><a onclick="toast('Terms of Service')">Terms of Service</a></li><li><a onclick="toast('Cookie Policy')">Cookie Policy</a></li><li><a onclick="toast('Data Processing')">Data Processing</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div>© 2024 HyrUp Inc. All rights reserved.</div><div class="footer-bottom-links"><a>User Agreement</a><a>Privacy Policy</a><a>Security</a></div></div>
+  </footer>
+</div>
+
+<!-- ========== FIND JOBS PAGE ========== -->
+<div class="page" id="page-find-jobs">
+  <div class="find-jobs-layout">
+    <aside class="filters-panel">
+      <div class="filters-header"><div class="filters-title">⚙️ Filters</div><div class="reset-btn" onclick="resetFilters()">Reset All</div></div>
+      <div class="filter-group">
+        <div class="filter-label">Job Type <span>⌄</span></div>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="type" value="Full-time" checked> <span>Full-time</span> <span class="count">847</span></label>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="type" value="Part-time"> <span>Part-time</span> <span class="count">214</span></label>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="type" value="Contract"> <span>Contract</span> <span class="count">389</span></label>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="type" value="Internship"> <span>Internship</span> <span class="count">124</span></label>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Work Mode <span>⌄</span></div>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="mode" value="On-site"> <span>On-site</span> <span class="count">432</span></label>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="mode" value="Remote" checked> <span>Remote</span> <span class="count">618</span></label>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="mode" value="Hybrid"> <span>Hybrid</span> <span class="count">195</span></label>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Salary Range <span>⌄</span></div>
+        <input type="range" class="range-slider" min="40" max="300" value="200" id="salarySlider" oninput="updateSalary(this.value)" onchange="applyFilters()">
+        <div class="range-labels"><span>$40k</span><span id="salary-max-label">Up to $200k</span></div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Experience Level <span>⌄</span></div>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="exp" value="Entry"> <span>Entry Level</span></label>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="exp" value="Mid"> <span>Mid-Level</span></label>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="exp" value="Senior" checked> <span>Senior</span></label>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="exp" value="Lead"> <span>Lead</span></label>
+        <label class="filter-option"><input type="checkbox" class="flt" data-type="exp" value="Executive"> <span>Executive</span></label>
+      </div>
+      <div class="alert-box">
+        <h6>⚡ Instant Alerts</h6>
+        <p>Get notified when new matching jobs are posted.</p>
+        <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="toast('🔔 Job alerts enabled!','success')">Enable Alerts</button>
+      </div>
+    </aside>
+    <div class="jobs-main">
+      <div class="search-wrap" style="margin-bottom:20px">
+        <div class="search-bar" style="margin:0">
+          <span style="font-size:.97rem;color:var(--light)">🔍</span>
+          <input class="search-input" id="jobs-search" placeholder="Job title, keyword, or company" oninput="handleSearch('jobs-search','jobs-results-panel')" autocomplete="off">
+          <div class="search-divider"></div>
+          <span style="font-size:.88rem;color:var(--light)">📍</span>
+          <input class="search-location" id="jobs-loc" placeholder="Location or 'Remote'">
+          <button class="btn btn-primary btn-sm" onclick="applyFilters()">Search Jobs</button>
+        </div>
+        <div class="search-results-panel" id="jobs-results-panel"></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+        <span style="font-size:.78rem;color:var(--mid);font-weight:600;display:flex;align-items:center">POPULAR:</span>
+        <span class="filter-chip" style="cursor:pointer" onclick="setQuickSearch('React Developer')">React Developer</span>
+        <span class="filter-chip" style="cursor:pointer" onclick="setQuickSearch('UI/UX Designer')">UI/UX Designer</span>
+        <span class="filter-chip" style="cursor:pointer" onclick="setQuickSearch('Data Scientist')">Data Scientist</span>
+        <span class="filter-chip" style="cursor:pointer" onclick="setQuickSearch('Marketing')">Marketing</span>
+        <span class="filter-chip" style="cursor:pointer" onclick="setQuickSearch('Product Manager')">Product Manager</span>
+      </div>
+      <div class="jobs-meta">
+        <div class="jobs-count" id="jobs-count-label">Showing jobs</div>
+        <div style="display:flex;align-items:center;gap:11px">
+          <div class="view-toggle">
+            <button class="view-btn active" id="grid-btn" onclick="setView('grid')">⊞</button>
+            <button class="view-btn" id="list-btn" onclick="setView('list')">≡</button>
+          </div>
+          <select class="sort-select" id="sort-select" onchange="applyFilters()">
+            <option value="newest">Newest First</option>
+            <option value="salary-high">Highest Salary</option>
+            <option value="salary-low">Lowest Salary</option>
+            <option value="relevant">Most Relevant</option>
+          </select>
+        </div>
+      </div>
+      <div id="active-filter-chips" class="active-filters"></div>
+      <div class="jobs-list-grid" id="jobs-results-grid"></div>
+      <div class="pagination" id="pagination-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== COMPANIES PAGE ========== -->
+<div class="page" id="page-companies">
+  <div class="companies-hero">
+    <div class="hero-badge" style="animation:none;justify-content:center;display:inline-flex">🏢 50,000+ Companies Hiring</div>
+    <h1>Discover Top Companies</h1>
+    <p>Explore company cultures, benefits, and open roles at the world's most innovative organizations.</p>
+    <div class="search-wrap" style="max-width:500px;margin:0 auto">
+      <div class="search-bar" style="background:rgba(255,255,255,.96)">
+        <span style="font-size:.97rem;color:var(--light)">🔍</span>
+        <input class="search-input" id="co-search" placeholder="Search companies..." oninput="handleSearch('co-search','co-results')" autocomplete="off">
+        <button class="btn btn-primary btn-sm" onclick="filterCompanies()">Search</button>
+      </div>
+      <div class="search-results-panel" id="co-results"></div>
+    </div>
+  </div>
+  <div class="companies-grid" id="companies-grid"></div>
+</div>
+
+<!-- ========== SALARIES PAGE ========== -->
+<div class="page" id="page-salaries">
+  <div class="salaries-hero">
+    <div class="hero-badge" style="animation:none;justify-content:center;display:inline-flex">💰 Salary Intelligence</div>
+    <h1>Know Your Worth</h1>
+    <p style="color:var(--mid);max-width:500px;margin:0 auto 34px">Real salary data from 500,000+ verified job offers. Always up to date.</p>
+    <div class="search-wrap" style="max-width:540px;margin:0 auto">
+      <div class="search-bar" style="margin:0">
+        <span style="font-size:.97rem;color:var(--light)">🔍</span>
+        <input class="search-input" id="sal-search" placeholder="Search role, e.g. Senior Engineer..." oninput="filterSalaries()" autocomplete="off">
+        <button class="btn btn-primary btn-sm" onclick="filterSalaries()">Search</button>
+      </div>
+    </div>
+  </div>
+  <div class="salary-table-wrap">
+    <table class="salary-table" id="salary-table">
+      <thead><tr><th>Job Title</th><th>Experience</th><th>Avg Salary Range</th><th>YoY Growth</th><th>Openings</th></tr></thead>
+      <tbody id="salary-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ========== CAREER ADVICE PAGE ========== -->
+<div class="page" id="page-career-advice">
+  <div class="advice-hero">
+    <div class="hero-badge" style="animation:none;justify-content:center;display:inline-flex">📚 Career Intelligence</div>
+    <h1>Career Advice & Resources</h1>
+    <p style="color:var(--mid);max-width:500px;margin:0 auto">Expert guidance, interview tips, resume help and industry insights.</p>
+  </div>
+  <div class="advice-grid" id="advice-grid"></div>
+</div>
+
+<!-- ========== SIGN IN PAGE ========== -->
+<div class="page" id="page-signin">
+  <div class="auth-layout">
+    <div class="auth-left">
+      <div class="logo" style="color:#fff;margin-bottom:36px"><div class="logo-icon">⚡</div> HyrUp</div>
+      <h2>Your next big opportunity starts here.</h2>
+      <p>Join 2M+ professionals who found their dream job through HyrUp's intelligent matching platform.</p>
+      <ul class="auth-features">
+        <li>AI-powered job matching based on your skills</li>
+        <li>One-click applications to top companies</li>
+        <li>Real-time salary benchmarking and insights</li>
+        <li>Direct messaging with recruiters</li>
+        <li>Track all your applications in one place</li>
+      </ul>
+    </div>
+    <div class="auth-right">
+      <div class="auth-form-wrap">
+        <div class="auth-logo"><div class="logo-icon" style="background:var(--primary)">⚡</div> HyrUp</div>
+        <h2 class="auth-title">Welcome back</h2>
+        <p class="auth-sub">Don't have an account? <a onclick="showPage('signup')">Create one free →</a></p>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" id="si-email" placeholder="you@example.com"></div>
+        <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" id="si-pass" placeholder="Enter your password" onkeydown="if(event.key==='Enter')handleSignIn()"></div>
+        <a class="form-forgot" onclick="toast('Password reset email sent!','info')">Forgot your password?</a>
+        <button class="btn btn-primary btn-auth" id="si-btn" onclick="handleSignIn()"><span id="si-btn-txt">Sign In to HyrUp</span></button>
+        <div class="divider"><span>or continue with</span></div>
+        <button class="btn-google" onclick="handleGoogleAuth()">
+          <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 002.38-5.88c0-.57-.05-.66-.15-1.18z"/><path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 01-7.18-2.54H1.83v2.07A8 8 0 008.98 17z"/><path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 010-3.04V5.41H1.83a8 8 0 000 7.18l2.67-2.07z"/><path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 001.83 5.4L4.5 7.49a4.77 4.77 0 014.48-3.3z"/></svg>
+          Continue with Google
+        </button>
+        <p class="terms-text">By signing in you agree to our <a>Terms of Service</a> and <a>Privacy Policy</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SIGN UP PAGE ========== -->
+<div class="page" id="page-signup">
+  <div class="auth-layout">
+    <div class="auth-left">
+      <div class="logo" style="color:#fff;margin-bottom:36px"><div class="logo-icon">⚡</div> HyrUp</div>
+      <h2>Land your dream job in record time.</h2>
+      <p>Create your free account and get matched with thousands of opportunities tailored to your experience and goals.</p>
+      <ul class="auth-features">
+        <li>Free forever for job seekers</li>
+        <li>Instant job matching on signup</li>
+        <li>Resume builder & AI optimizer</li>
+        <li>See who viewed your profile</li>
+        <li>Priority access to featured listings</li>
+      </ul>
+    </div>
+    <div class="auth-right" style="align-items:flex-start;padding-top:40px">
+      <div class="auth-form-wrap">
+        <div class="auth-logo"><div class="logo-icon" style="background:var(--primary)">⚡</div> HyrUp</div>
+        <div class="steps-indicator" id="signup-steps">
+          <div class="step active" id="step-1"><div class="step-num">1</div><div class="step-label">Account</div></div>
+          <div class="step-line"></div>
+          <div class="step" id="step-2"><div class="step-num">2</div><div class="step-label">Profile</div></div>
+          <div class="step-line"></div>
+          <div class="step" id="step-3"><div class="step-num">3</div><div class="step-label">Documents</div></div>
+        </div>
+        <div id="signup-step-1">
+          <h2 class="auth-title">Create your account</h2>
+          <p class="auth-sub">Already have an account? <a onclick="showPage('signin')">Sign in →</a></p>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">First Name *</label><input class="form-input" id="su-fname" placeholder="Alex"></div>
+            <div class="form-group"><label class="form-label">Last Name *</label><input class="form-input" id="su-lname" placeholder="Rivera"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Email Address *</label><input class="form-input" type="email" id="su-email" placeholder="you@example.com"></div>
+          <div class="form-group"><label class="form-label">Password *</label><input class="form-input" type="password" id="su-pass" placeholder="Min 8 characters"></div>
+          <div class="form-group"><label class="form-label">I am looking to...</label><select class="form-input" id="su-role"><option value="seeker">Find a job</option><option value="employer">Hire talent</option><option value="both">Both</option></select></div>
+          <div class="divider"><span>or sign up with</span></div>
+          <button class="btn-google" onclick="handleGoogleAuth()" style="margin-bottom:14px">
+            <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 002.38-5.88c0-.57-.05-.66-.15-1.18z"/><path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 01-7.18-2.54H1.83v2.07A8 8 0 008.98 17z"/><path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 010-3.04V5.41H1.83a8 8 0 000 7.18l2.67-2.07z"/><path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 001.83 5.4L4.5 7.49a4.77 4.77 0 014.48-3.3z"/></svg>
+            Continue with Google
+          </button>
+          <div class="divider" style="margin:0 0 14px"></div>
+          <button class="btn btn-primary btn-auth" onclick="nextSignupStep(2)">Continue →</button>
+          <p class="terms-text">By creating an account, you agree to our <a>Terms of Service</a></p>
+        </div>
+        <div id="signup-step-2" style="display:none">
+          <h2 class="auth-title">Your Professional Profile</h2>
+          <p class="auth-sub">Tell us about yourself to get better job matches.</p>
+          <div class="form-group"><label class="form-label">Current Job Title</label><input class="form-input" id="su-title" placeholder="e.g. Senior Frontend Engineer"></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Location</label><input class="form-input" id="su-location" placeholder="City, State"></div>
+            <div class="form-group"><label class="form-label">Work Preference</label><select class="form-input" id="su-workmode"><option>Remote</option><option>Hybrid</option><option>On-site</option></select></div>
+          </div>
+          <div class="form-group"><label class="form-label">Years of Experience</label><select class="form-input" id="su-exp"><option>0-2 years</option><option>2-5 years</option><option>5-8 years</option><option>8-12 years</option><option>12+ years</option></select></div>
+          <div class="form-group"><label class="form-label">Expected Salary Range</label><select class="form-input" id="su-salary"><option>$40k - $80k</option><option>$80k - $120k</option><option>$120k - $160k</option><option>$160k - $220k</option><option>$220k+</option></select></div>
+          <div class="form-group"><label class="form-label">Professional Summary</label><textarea class="form-textarea" id="su-summary" placeholder="Brief summary of your experience and what you're looking for..."></textarea></div>
+          <div class="form-group">
+            <label class="form-label">Top Skills (add up to 10)</label>
+            <div id="su-skills-wrap" style="min-height:36px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:4px"></div>
+            <div class="skill-input-wrap">
+              <input class="form-input" id="su-skill-input" placeholder="e.g. React, Python, Figma..." onkeydown="if(event.key==='Enter'){event.preventDefault();addSkillFromInput()}">
+              <button class="add-skill-btn" onclick="addSkillFromInput()">+ Add</button>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:6px">
+            <button class="btn btn-outline" onclick="prevSignupStep(1)" style="flex:1;justify-content:center">← Back</button>
+            <button class="btn btn-primary" onclick="nextSignupStep(3)" style="flex:2;justify-content:center">Continue →</button>
+          </div>
+        </div>
+        <div id="signup-step-3" style="display:none">
+          <h2 class="auth-title">Upload Your Documents</h2>
+          <p class="auth-sub">Add your CV and portfolio to stand out to employers.</p>
+          <div class="form-group">
+            <label class="form-label">Resume / CV *</label>
+            <div class="file-upload-area" id="cv-upload-area" onclick="triggerFileUpload('cv-file')">
+              <input type="file" id="cv-file" accept=".pdf,.doc,.docx" style="display:none" onchange="handleFileUpload(this,'cv-upload-area','cv-file-name')">
+              <div class="upload-icon">📄</div>
+              <div class="upload-label" id="cv-file-name">Click to upload Resume/CV</div>
+              <div class="upload-sub">PDF, DOC, DOCX (Max 5MB)</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Portfolio / Work Samples (Optional)</label>
+            <div class="file-upload-area" id="portfolio-upload-area" onclick="triggerFileUpload('portfolio-file')">
+              <input type="file" id="portfolio-file" accept=".pdf,.zip,.png,.jpg" style="display:none" onchange="handleFileUpload(this,'portfolio-upload-area','portfolio-file-name')">
+              <div class="upload-icon">🖼️</div>
+              <div class="upload-label" id="portfolio-file-name">Click to upload Portfolio</div>
+              <div class="upload-sub">PDF, ZIP, Images (Max 20MB)</div>
+            </div>
+          </div>
+          <div class="form-group"><label class="form-label">LinkedIn Profile URL</label><input class="form-input" id="su-linkedin" placeholder="https://linkedin.com/in/yourname"></div>
+          <div class="form-group"><label class="form-label">GitHub / Portfolio URL</label><input class="form-input" id="su-github" placeholder="https://github.com/yourname"></div>
+          <div class="form-group">
+            <label class="form-label">Work Experience</label>
+            <div id="exp-list"></div>
+            <button class="btn btn-outline btn-sm" onclick="addExpEntry()" style="margin-top:8px;width:100%;justify-content:center">+ Add Experience</button>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:14px">
+            <button class="btn btn-outline" onclick="prevSignupStep(2)" style="flex:1;justify-content:center">← Back</button>
+            <button class="btn btn-primary" id="su-submit-btn" onclick="handleSignUp()" style="flex:2;justify-content:center"><span id="su-submit-txt">Create Account 🚀</span></button>
+          </div>
+          <p class="terms-text" style="margin-top:12px">You can always update your profile later in your dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== POST JOB PAGE ========== -->
+<div class="page" id="page-post-job">
+  <div class="post-job-wrap">
+    <div class="post-job-header"><div class="hero-badge" style="animation:none;margin-bottom:10px">🏢 Employer Portal</div><h1>Post a Job Opening</h1><p style="color:var(--mid)">Reach 2M+ qualified professionals. Get applications within hours.</p></div>
+    <div class="form-sec"><h3>📋 Job Details</h3>
+      <div class="form-group"><label class="form-label">Job Title *</label><input class="form-input" id="pj-title" placeholder="e.g. Senior Frontend Engineer"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Company Name *</label><input class="form-input" id="pj-company" placeholder="Your company name"></div><div class="form-group"><label class="form-label">Department</label><input class="form-input" id="pj-dept" placeholder="e.g. Engineering"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Job Type *</label><select class="form-select" id="pj-type"><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Internship</option></select></div><div class="form-group"><label class="form-label">Work Mode *</label><select class="form-select" id="pj-mode"><option>Remote</option><option>On-site</option><option>Hybrid</option></select></div></div>
+      <div class="form-group"><label class="form-label">Location</label><input class="form-input" id="pj-location" placeholder="City, State or 'Remote'"></div>
+    </div>
+    <div class="form-sec"><h3>💰 Compensation</h3>
+      <div class="form-row"><div class="form-group"><label class="form-label">Min Salary ($)</label><input class="form-input" type="number" id="pj-min-sal" placeholder="100000"></div><div class="form-group"><label class="form-label">Max Salary ($)</label><input class="form-input" type="number" id="pj-max-sal" placeholder="180000"></div></div>
+      <div class="form-group"><label class="form-label">Experience Level</label><select class="form-select" id="pj-explevel"><option>Entry Level</option><option>Mid Level</option><option selected>Senior</option><option>Lead/Principal</option><option>Executive</option></select></div>
+    </div>
+    <div class="form-sec"><h3>📝 Job Description</h3>
+      <div class="form-group"><label class="form-label">About the Role *</label><textarea class="form-textarea" id="pj-about" placeholder="Describe the role, team, and why someone should join..."></textarea></div>
+      <div class="form-group"><label class="form-label">Responsibilities *</label><textarea class="form-textarea" id="pj-resp" placeholder="List key responsibilities (one per line)..."></textarea></div>
+      <div class="form-group"><label class="form-label">Requirements *</label><textarea class="form-textarea" id="pj-req" placeholder="Required skills, years of experience, tools..."></textarea></div>
+    </div>
+    <div class="form-sec"><h3>🎯 Choose Your Plan</h3>
+      <div class="pricing-cards">
+        <div class="pricing-card" onclick="selectPlan(this)"><h4>Basic</h4><div class="price">$0</div><p>1 listing, 30 days, standard visibility</p></div>
+        <div class="pricing-card selected" onclick="selectPlan(this)"><h4>⭐ Pro</h4><div class="price">$99</div><p>3 listings, 60 days, featured + alerts</p></div>
+        <div class="pricing-card" onclick="selectPlan(this)"><h4>Enterprise</h4><div class="price">Custom</div><p>Unlimited, ATS integration, dedicated support</p></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:flex-end">
+      <button class="btn btn-outline btn-lg" onclick="showPage('home')">Cancel</button>
+      <button class="btn btn-primary btn-lg" onclick="handlePostJob()">🚀 Publish Job Listing</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== DASHBOARD PAGE ========== -->
+<div class="page" id="page-dashboard">
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="sidebar-nav">
+        <div class="sidebar-item active" id="dash-nav-overview" onclick="showDashPanel('overview',this)"><span class="icon">🏠</span> Dashboard</div>
+        <div class="sidebar-item" id="dash-nav-search" onclick="showDashPanel('search',this)"><span class="icon">🔍</span> Job Search</div>
+        <div class="sidebar-item" id="dash-nav-applications" onclick="showDashPanel('applications',this)"><span class="icon">📋</span> My Applications</div>
+        <div class="sidebar-item" id="dash-nav-messages" onclick="showDashPanel('messages',this)"><span class="icon">💬</span> Messages <span class="sidebar-badge">3</span></div>
+        <div class="sidebar-item" id="dash-nav-profile" onclick="showDashPanel('profile',this)"><span class="icon">👤</span> Profile Settings</div>
+      </div>
+      <div class="sidebar-promo">
+        <h6>📈 PRO TIP</h6>
+        <p>Users with a portfolio link are 3x more likely to get interviews.</p>
+        <button class="btn btn-primary btn-sm" style="width:100%;justify-content:center" onclick="showDashPanel('profile',document.getElementById('dash-nav-profile'))">Add Portfolio</button>
+      </div>
+      <div style="flex:1"></div>
+      <div class="sidebar-signout" onclick="signOut()">↩️ Sign Out</div>
+    </aside>
+    <div class="dash-main" id="dash-content">
+      <!-- content injected by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+// ================================================================
+//  HyrUp — Complete Application Logic
+// ================================================================
+
+// ---- USER STATE ----
+var APP = {
+  user: null,
+  isLoggedIn: false,
+  savedJobs: [],
+  applications: [
+    {id:1,title:'Senior Frontend Engineer',company:'TechFlow',date:'2 days ago',status:'interview'},
+    {id:2,title:'Product Designer',company:'NovaPay',date:'5 days ago',status:'pending'},
+    {id:3,title:'React Developer',company:'CloudScale',date:'1 week ago',status:'rejected'},
+    {id:4,title:'Full Stack Engineer',company:'GreenLeaf',date:'10 days ago',status:'pending'},
+    {id:5,title:'UI Engineer',company:'BrightMind',date:'2 weeks ago',status:'offer'},
+  ],
+  signupData: {},
+  currentDashPanel: 'overview',
+  currentJobPage: 1,
+  jobsPerPage: 9,
+  searchQuery: '',
+  activeCategoryFilter: ''
+};
+
+// ---- ALL JOBS DATA ----
+var ALL_JOBS = [
+  {id:1,title:'Senior Frontend Engineer',company:'TechFlow Systems',location:'San Francisco, CA',type:'Full-time',mode:'Remote',salary:'$140k - $180k',salaryMin:140,salaryMax:180,time:'2H AGO',logo:'TF',color:'#dbeafe',tc:'#1d4ed8',exp:'Senior',category:'Software Engineering',desc:'Lead frontend architecture at TechFlow. You will work on our core product used by 500k+ users daily, building next-generation web interfaces with React and TypeScript.',reqs:['5+ years of frontend development','Expert in React and TypeScript','Experience with design systems','Strong CSS/animation skills']},
+  {id:2,title:'Product Designer',company:'Creative Studio',location:'New York, NY',type:'Full-time',mode:'Hybrid',salary:'$110k - $150k',salaryMin:110,salaryMax:150,time:'5H AGO',logo:'CS',color:'#fce7f3',tc:'#be185d',exp:'Mid',category:'Product Design',desc:'Design beautiful digital experiences for Creative Studio clients spanning Fortune 500 companies. Work closely with product and engineering teams.',reqs:['3+ years product design experience','Proficiency in Figma','Strong portfolio of shipped products','Experience with user research']},
+  {id:3,title:'Backend Developer (Node.js)',company:'DataScale AI',location:'Austin, TX',type:'Contract',mode:'On-site',salary:'$90/hr - $110/hr',salaryMin:90,salaryMax:110,time:'1D AGO',logo:'DS',color:'#d1fae5',tc:'#065f46',exp:'Senior',category:'Software Engineering',desc:"Build scalable APIs and microservices powering DataScale's AI analytics platform handling petabytes of data.",reqs:['4+ years Node.js experience','Experience with PostgreSQL and Redis','Knowledge of distributed systems','API design best practices']},
+  {id:4,title:'Marketing Specialist',company:'Global Brands Inc',location:'Chicago, IL',type:'Full-time',mode:'Remote',salary:'$90k - $120k',salaryMin:90,salaryMax:120,time:'2D AGO',logo:'GB',color:'#fef9c3',tc:'#a16207',exp:'Mid',category:'Marketing',desc:"Drive marketing campaigns for Global Brands' portfolio of consumer products across digital channels including paid, organic, and social.",reqs:['3+ years digital marketing experience','Google Analytics & Ads certified','Experience with email marketing tools','Strong copywriting skills']},
+  {id:5,title:'DevOps Engineer',company:'CloudNine Solutions',location:'Seattle, WA',type:'Full-time',mode:'Hybrid',salary:'$150k - $190k',salaryMin:150,salaryMax:190,time:'3D AGO',logo:'CN',color:'#ede9fe',tc:'#7c3aed',exp:'Senior',category:'Software Engineering',desc:"Design and operate the cloud infrastructure for CloudNine's SaaS platform serving 10M users globally with 99.99% uptime SLA.",reqs:['5+ years DevOps/SRE experience','AWS/GCP/Azure certifications','Kubernetes and Docker expertise','CI/CD pipeline design']},
+  {id:6,title:'UX Researcher',company:'UserFirst Tech',location:'Remote',type:'Part-time',mode:'Remote',salary:'$60k - $80k',salaryMin:60,salaryMax:80,time:'4D AGO',logo:'UF',color:'#fee2e2',tc:'#dc2626',exp:'Entry',category:'Product Design',desc:'Conduct user research and usability studies to inform product decisions at UserFirst Tech. Work part-time with a distributed team.',reqs:['1+ years UX research experience','Proficiency in usability testing tools','Experience with survey design','Strong analytical skills']},
+  {id:7,title:'Data Scientist',company:'Insight Analytics',location:'Austin, TX',type:'Full-time',mode:'Hybrid',salary:'$130k - $160k',salaryMin:130,salaryMax:160,time:'2D AGO',logo:'IA',color:'#f0fdf4',tc:'#15803d',exp:'Senior',category:'Data Science',desc:"Apply ML techniques to extract insights from massive datasets and influence product strategy at one of the fastest-growing analytics companies.",reqs:['PhD or 4+ years industry experience','Python, R, and SQL proficiency','Experience with ML frameworks (PyTorch, TensorFlow)','Strong statistical modeling skills']},
+  {id:8,title:'iOS Developer',company:'MobileFirst Labs',location:'San Jose, CA',type:'Full-time',mode:'On-site',salary:'$125k - $165k',salaryMin:125,salaryMax:165,time:'1D AGO',logo:'ML',color:'#f0f9ff',tc:'#0284c7',exp:'Mid',category:'Software Engineering',desc:"Build elegant iOS apps used by millions. Work with Swift, SwiftUI, and cutting-edge Apple frameworks on MobileFirst's consumer productivity suite.",reqs:['3+ years iOS development','Expert in Swift and SwiftUI','Published apps on App Store','Experience with Core Data and networking']},
+  {id:9,title:'Product Manager',company:'LaunchPad Inc',location:'Remote',type:'Full-time',mode:'Remote',salary:'$145k - $190k',salaryMin:145,salaryMax:190,time:'5H AGO',logo:'LP',color:'#fdf4ff',tc:'#9333ea',exp:'Senior',category:'Product Management',desc:"Own the product roadmap for LaunchPad's B2B SaaS platform. Drive 0-to-1 features with engineering and design, interfacing directly with enterprise customers.",reqs:['5+ years product management','Experience with B2B SaaS products','Strong data analysis skills','Excellent stakeholder communication']},
+  {id:10,title:'Staff Software Engineer',company:'Stripe',location:'San Francisco, CA',type:'Full-time',mode:'Hybrid',salary:'$220k - $300k',salaryMin:220,salaryMax:300,time:'6H AGO',logo:'St',color:'#f0f0ff',tc:'#635bff',exp:'Lead',category:'Software Engineering',desc:"Lead architectural decisions at Stripe as we scale global payments infrastructure. You'll mentor engineers and drive technical direction across multiple teams.",reqs:['8+ years software engineering','Deep expertise in distributed systems','Track record of architectural leadership','Experience with high-scale systems']},
+  {id:11,title:'Content Strategist',company:'MediaPulse',location:'Los Angeles, CA',type:'Full-time',mode:'Hybrid',salary:'$80k - $110k',salaryMin:80,salaryMax:110,time:'3D AGO',logo:'MP',color:'#fff7ed',tc:'#ea580c',exp:'Mid',category:'Content',desc:"Develop and execute content strategies across MediaPulse's portfolio of digital properties, managing editorial calendars and performance metrics.",reqs:['3+ years content strategy experience','SEO and analytics expertise','Experience managing editorial teams','Strong writing and editing skills']},
+  {id:12,title:'Operations Manager',company:'ScaleOps Co',location:'Chicago, IL',type:'Full-time',mode:'On-site',salary:'$95k - $130k',salaryMin:95,salaryMax:130,time:'1D AGO',logo:'SO',color:'#ecfdf5',tc:'#059669',exp:'Mid',category:'Operations',desc:"Oversee day-to-day operations for ScaleOps' growing logistics network. You'll lead a team of 15 and drive efficiency improvements.",reqs:['4+ years operations management','Experience with logistics or supply chain','Data-driven decision making','Strong leadership skills']},
+  {id:13,title:'Machine Learning Engineer',company:'Anthropic',location:'San Francisco, CA',type:'Full-time',mode:'Hybrid',salary:'$200k - $320k',salaryMin:200,salaryMax:320,time:'8H AGO',logo:'An',color:'#ffe4e6',tc:'#e11d48',exp:'Senior',category:'Data Science',desc:"Push the frontier of AI safety research by building training infrastructure and evaluation systems for large language models.",reqs:['PhD or equivalent in ML/CS','Deep expertise in PyTorch','Experience with distributed training','Research publications preferred']},
+  {id:14,title:'UX/UI Designer',company:'Figma',location:'San Francisco, CA',type:'Full-time',mode:'Hybrid',salary:'$150k - $200k',salaryMin:150,salaryMax:200,time:'12H AGO',logo:'Fi',color:'#fff1f2',tc:'#f43f5e',exp:'Senior',category:'Product Design',desc:"Design the future of design tools at Figma. You'll work on our core canvas experience and plugin ecosystem used by 8M+ designers worldwide.",reqs:['5+ years product design','Expert Figma user (obviously!)', 'Strong systems thinking','Experience with developer handoff workflows']},
+  {id:15,title:'Engineering Manager',company:'Notion',location:'Remote',type:'Full-time',mode:'Remote',salary:'$200k - $260k',salaryMin:200,salaryMax:260,time:'1D AGO',logo:'No',color:'#f5f5f5',tc:'#333',exp:'Lead',category:'Software Engineering',desc:"Lead a team of 6-8 engineers at Notion building the blocks and databases features powering millions of workspaces.",reqs:['3+ years engineering management','Strong technical background','Experience growing engineers','Track record of shipping high-quality products']},
+];
+
+var COMPANIES_DATA = [
+  {name:'Google',desc:'Search • Ads • Cloud',size:'100,000+',logo:'G',color:'#4285F4',jobs:342,rating:4.8,grad:'#dbeafe,#ede9fe'},
+  {name:'Stripe',desc:'FinTech • Payments',size:'8,000',logo:'St',color:'#635bff',jobs:89,rating:4.7,grad:'#ede9fe,#f0f4ff'},
+  {name:'Airbnb',desc:'Travel • Marketplace',size:'6,500',logo:'Air',color:'#FF5A5F',jobs:124,rating:4.5,grad:'#fce7f3,#ffe4e6'},
+  {name:'Figma',desc:'Design Tools • SaaS',size:'2,000',logo:'Fi',color:'#F24E1E',jobs:67,rating:4.9,grad:'#fff1f2,#fce7f3'},
+  {name:'Notion',desc:'Productivity • B2B SaaS',size:'800',logo:'No',color:'#333',jobs:43,rating:4.6,grad:'#f5f5f5,#fafafa'},
+  {name:'Vercel',desc:'Cloud • DevTools',size:'600',logo:'V',color:'#000',jobs:38,rating:4.8,grad:'#f1f5f9,#e2e8f0'},
+  {name:'Linear',desc:'Project Mgmt • Tools',size:'350',logo:'Li',color:'#5E6AD2',jobs:22,rating:4.9,grad:'#ede9fe,#f0f4ff'},
+  {name:'Anthropic',desc:'AI Safety • Research',size:'500',logo:'An',color:'#e11d48',jobs:56,rating:4.9,grad:'#ffe4e6,#fce7f3'},
+  {name:'Shopify',desc:'E-Commerce • Platform',size:'12,000',logo:'Sh',color:'#008060',jobs:198,rating:4.6,grad:'#d1fae5,#ecfdf5'},
+];
+
+var SALARIES_DATA = [
+  {title:'Staff Software Engineer',exp:'8+ yrs',min:200,max:350,growth:'+12%',openings:234,pct:90},
+  {title:'Machine Learning Engineer',exp:'4-8 yrs',min:180,max:320,growth:'+22%',openings:198,pct:85},
+  {title:'Engineering Manager',exp:'6-10 yrs',min:180,max:300,growth:'+10%',openings:156,pct:82},
+  {title:'Principal Engineer',exp:'10+ yrs',min:250,max:400,growth:'+15%',openings:89,pct:95},
+  {title:'Senior Frontend Engineer',exp:'5-8 yrs',min:150,max:220,growth:'+9%',openings:1245,pct:70},
+  {title:'Product Manager (Senior)',exp:'4-7 yrs',min:145,max:210,growth:'+7%',openings:543,pct:66},
+  {title:'Data Scientist',exp:'3-6 yrs',min:130,max:190,growth:'+18%',openings:432,pct:62},
+  {title:'UX/UI Designer (Senior)',exp:'4-7 yrs',min:120,max:185,growth:'+8%',openings:678,pct:58},
+  {title:'DevOps / SRE Engineer',exp:'4-7 yrs',min:140,max:200,growth:'+11%',openings:321,pct:65},
+  {title:'iOS Developer',exp:'3-5 yrs',min:120,max:165,growth:'+6%',openings:287,pct:55},
+  {title:'Marketing Manager',exp:'4-6 yrs',min:90,max:145,growth:'+4%',openings:765,pct:45},
+  {title:'Content Strategist',exp:'3-5 yrs',min:75,max:120,growth:'+3%',openings:432,pct:38},
+];
+
+var ADVICE_DATA = [
+  {emoji:'📄',bg:'#dbeafe',cat:'Resume Tips',title:'The 7-Second Resume: How to Pass ATS and Human Screening',read:'5 min',date:'Feb 20',url:'https://www.indeed.com/career-advice/resumes-cover-letters/how-to-make-your-resume-pass-the-applicant-tracking-system'},
+  {emoji:'🎤',bg:'#d1fae5',cat:'Interview Prep',title:'STAR Method Mastered: Answer Any Behavioral Question Perfectly',read:'8 min',date:'Feb 18',url:'https://www.themuse.com/advice/star-interview-method'},
+  {emoji:'💰',bg:'#fce7f3',cat:'Salary Negotiation',title:'How I Negotiated a 40% Salary Increase With 3 Competing Offers',read:'6 min',date:'Feb 15',url:'https://www.glassdoor.com/blog/guide/how-to-negotiate-your-salary/'},
+  {emoji:'🌐',bg:'#ede9fe',cat:'Networking',title:'Cold Outreach That Actually Works: LinkedIn Messages Recruiters Open',read:'7 min',date:'Feb 12',url:'https://www.linkedin.com/business/talent/blog/talent-acquisition/how-to-write-linkedin-inmail-that-gets-response'},
+  {emoji:'🔀',bg:'#fef9c3',cat:'Career Change',title:'From Finance to Tech: A Step-by-Step Guide to Switching Industries',read:'10 min',date:'Feb 10',url:'https://hbr.org/2021/01/how-to-make-a-career-pivot'},
+  {emoji:'🚀',bg:'#fee2e2',cat:'Growth',title:'Senior to Staff: What It Actually Takes to Get Promoted in Tech',read:'9 min',date:'Feb 8',url:'https://staffeng.com/guides/what-do-staff-engineers-actually-do'},
+];
+
+var GOOGLE_NAMES = ['Jamie Chen','Alex Morgan','Sam Taylor','Jordan Lee','Riley Kim','Casey Park'];
+
+// ---- TOAST ----
+var _toastTimer = null;
+function toast(msg, type, icon) {
+  clearTimeout(_toastTimer);
+  var t = document.getElementById('toast');
+  t.className = 'toast' + (type?' toast-'+type:'');
+  document.getElementById('toast-msg').textContent = msg;
+  document.getElementById('toast-icon').textContent = icon || (type==='success'?'✓':type==='error'?'✕':type==='info'?'ℹ':'✓');
+  t.classList.add('show');
+  _toastTimer = setTimeout(function(){t.classList.remove('show')},3200);
+}
+
+// ---- PAGE NAV ----
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  var el = document.getElementById('page-'+page);
+  if(!el) return;
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelectorAll('.nav-link').forEach(function(l){l.classList.remove('active')});
+  var nlMap = {'find-jobs':'nl-find-jobs','companies':'nl-companies','salaries':'nl-salaries','career-advice':'nl-career-advice'};
+  if(nlMap[page]) document.getElementById(nlMap[page]).classList.add('active');
+  updateNavActions();
+  if(page==='find-jobs') initFindJobs();
+  if(page==='companies') initCompanies();
+  if(page==='salaries') initSalaries();
+  if(page==='career-advice') initAdvice();
+  if(page==='home') initHomeFeatured();
+  if(page==='dashboard') renderDashPanel(APP.currentDashPanel);
+  setTimeout(initReveal, 80);
+}
+
+function updateNavActions() {
+  var na = document.getElementById('nav-actions');
+  if(APP.isLoggedIn) {
+    var initials = getInitials(APP.user.name);
+    na.innerHTML = '<div style="position:relative"><button class="btn btn-outline btn-sm" onclick="showPage(\'dashboard\')">My Dashboard</button></div><div style="width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem;cursor:pointer;font-family:\'Syne\',sans-serif" onclick="showPage(\'dashboard\')" title="'+APP.user.name+'">'+initials+'</div>';
+  } else {
+    na.innerHTML = '<button class="btn btn-outline btn-sm" onclick="showPage(\'signin\')">Sign In</button><button class="btn btn-primary btn-sm" onclick="showPage(\'post-job\')">Post a Job</button>';
+  }
+}
+
+function getInitials(name) {
+  if(!name) return '?';
+  var parts = name.trim().split(' ');
+  if(parts.length>=2) return (parts[0][0]+parts[parts.length-1][0]).toUpperCase();
+  return name[0].toUpperCase();
+}
+
+// ---- AUTH ----
+function handleSignIn() {
+  var email = document.getElementById('si-email').value.trim();
+  var pass = document.getElementById('si-pass').value;
+  if(!email){toast('Please enter your email address','error');return;}
+  if(!pass){toast('Please enter your password','error');return;}
+  if(!/\S+@\S+\.\S+/.test(email)){toast('Please enter a valid email address','error');return;}
+  var btn = document.getElementById('si-btn-txt');
+  btn.innerHTML = '<span class="spinner"></span> Signing in...';
+  setTimeout(function(){
+    btn.textContent = 'Sign In to HyrUp';
+    var name = email.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase()});
+    loginUser({name:name, email:email, avatar:getInitials(name), via:'email'});
+  },1400);
+}
+
+function handleGoogleAuth() {
+  var randomName = GOOGLE_NAMES[Math.floor(Math.random()*GOOGLE_NAMES.length)];
+  toast('Connecting to Google...','info','🔄');
+  setTimeout(function(){
+    loginUser({name:randomName, email:randomName.toLowerCase().replace(' ','.')+'.'+Math.floor(Math.random()*999)+'@gmail.com', avatar:getInitials(randomName), via:'google'});
+  },1800);
+}
+
+function handleSignUp() {
+  var btn = document.getElementById('su-submit-txt');
+  btn.innerHTML = '<span class="spinner"></span> Creating account...';
+  setTimeout(function(){
+    var fname = document.getElementById('su-fname').value.trim() || 'User';
+    var lname = document.getElementById('su-lname').value.trim() || '';
+    var name = (fname+' '+lname).trim();
+    var email = document.getElementById('su-email').value.trim() || 'user@example.com';
+    loginUser({
+      name: name, email: email, avatar: getInitials(name), via: 'signup',
+      title: document.getElementById('su-title').value || 'Professional',
+      location: document.getElementById('su-location').value || 'Remote',
+      summary: document.getElementById('su-summary').value || '',
+      skills: APP.signupData.skills || [],
+      linkedin: document.getElementById('su-linkedin').value || '',
+      github: document.getElementById('su-github').value || '',
+    });
+    btn.textContent = 'Create Account 🚀';
+  },1800);
+}
+
+function loginUser(userData) {
+  APP.user = userData;
+  APP.isLoggedIn = true;
+  document.getElementById('floatingChat').style.display = 'block';
+  updateNavActions();
+  showPage('dashboard');
+  toast('Welcome to HyrUp, '+userData.name.split(' ')[0]+'! 🎉','success');
+}
+
+function signOut() {
+  APP.isLoggedIn = false;
+  APP.user = null;
+  document.getElementById('floatingChat').style.display = 'none';
+  updateNavActions();
+  showPage('home');
+  toast('Signed out. See you soon! 👋','info');
+}
+
+// ---- SIGNUP STEPS ----
+function nextSignupStep(step) {
+  if(step===2) {
+    var fname = document.getElementById('su-fname').value.trim();
+    var email = document.getElementById('su-email').value.trim();
+    var pass = document.getElementById('su-pass').value;
+    if(!fname){toast('Please enter your first name','error');return;}
+    if(!email||!/\S+@\S+\.\S+/.test(email)){toast('Please enter a valid email','error');return;}
+    if(!pass||pass.length<6){toast('Password must be at least 6 characters','error');return;}
+  }
+  document.getElementById('signup-step-'+(step-1)).style.display = 'none';
+  document.getElementById('signup-step-'+step).style.display = 'block';
+  document.getElementById('signup-step-'+step).style.animation = 'fadeInUp .4s ease both';
+  for(var i=1;i<=3;i++){
+    var s = document.getElementById('step-'+i);
+    s.classList.remove('active','done');
+    if(i<step) s.classList.add('done');
+    if(i===step) s.classList.add('active');
+  }
+  APP.signupData.skills = APP.signupData.skills||[];
+}
+function prevSignupStep(step) {
+  document.getElementById('signup-step-'+(step+1)).style.display = 'none';
+  document.getElementById('signup-step-'+step).style.display = 'block';
+  for(var i=1;i<=3;i++){
+    var s = document.getElementById('step-'+i);
+    s.classList.remove('active','done');
+    if(i<step) s.classList.add('done');
+    if(i===step) s.classList.add('active');
+  }
+}
+
+function addSkillFromInput() {
+  var input = document.getElementById('su-skill-input');
+  var val = input.value.trim();
+  if(!val) return;
+  APP.signupData.skills = APP.signupData.skills||[];
+  if(APP.signupData.skills.length>=10){toast('Maximum 10 skills allowed','error');return;}
+  if(APP.signupData.skills.includes(val)){toast('Skill already added','error');return;}
+  APP.signupData.skills.push(val);
+  renderSkills();
+  input.value = '';
+}
+function removeSkill(skill) {
+  APP.signupData.skills = APP.signupData.skills.filter(function(s){return s!==skill});
+  renderSkills();
+}
+function renderSkills() {
+  var wrap = document.getElementById('su-skills-wrap');
+  if(!wrap) return;
+  wrap.innerHTML = (APP.signupData.skills||[]).map(function(s){
+    return '<span class="skill-tag">'+s+'<button onclick="removeSkill(\''+s+'\')">✕</button></span>';
+  }).join('');
+}
+
+function triggerFileUpload(id) { document.getElementById(id).click(); }
+function handleFileUpload(input, areaId, labelId) {
+  if(!input.files||!input.files[0]) return;
+  var f = input.files[0];
+  var area = document.getElementById(areaId);
+  var label = document.getElementById(labelId);
+  area.classList.add('has-file');
+  label.textContent = '✓ '+f.name+' ('+Math.round(f.size/1024)+'KB)';
+  toast('File uploaded: '+f.name,'success');
+}
+
+var _expCount = 0;
+function addExpEntry() {
+  _expCount++;
+  var id = 'exp-'+_expCount;
+  var list = document.getElementById('exp-list');
+  if(!list) return;
+  var div = document.createElement('div');
+  div.className = 'exp-card';
+  div.id = id;
+  div.innerHTML = '<button class="exp-remove" onclick="removeExp(\''+id+'\')">✕</button>'
+    +'<div class="form-row" style="margin-bottom:10px"><div class="form-group"><label class="form-label">Job Title</label><input class="form-input" placeholder="e.g. Software Engineer"></div><div class="form-group"><label class="form-label">Company</label><input class="form-input" placeholder="Company name"></div></div>'
+    +'<div class="form-row"><div class="form-group"><label class="form-label">Start Date</label><input class="form-input" type="month"></div><div class="form-group"><label class="form-label">End Date</label><input class="form-input" type="month" placeholder="Present"></div></div>'
+    +'<div class="form-group" style="margin-top:6px"><label class="form-label">Description</label><textarea class="form-textarea" placeholder="Describe your responsibilities and achievements..." style="min-height:70px"></textarea></div>';
+  list.appendChild(div);
+  div.style.animation = 'fadeInUp .35s ease';
+}
+function removeExp(id) {
+  var el = document.getElementById(id);
+  if(el){el.style.animation='fadeIn .25s ease reverse both';setTimeout(function(){el.remove()},200);}
+}
+
+// ---- MODAL ----
+function openModal(id) {document.getElementById(id).classList.add('open')}
+function closeModal(id) {document.getElementById(id).classList.remove('open')}
+document.getElementById('jobModal').addEventListener('click',function(e){if(e.target===this)closeModal('jobModal')});
+
+function openJobModal(job) {
+  if(typeof job === 'number') job = ALL_JOBS.find(function(j){return j.id===job}) || ALL_JOBS[0];
+  document.getElementById('modal-job-title').textContent = job.title;
+  document.getElementById('modal-company').textContent = job.company+' • '+job.location;
+  document.getElementById('modal-salary').textContent = job.salary+(job.isPosted?'':'/year');
+  document.getElementById('modal-desc').textContent = job.desc;
+  document.getElementById('modal-tags').innerHTML = '<span class="tag '+(job.type==='Full-time'?'full-time':job.type==='Contract'?'contract':'part-time')+'">'+job.type+'</span><span class="tag '+(job.mode==='Remote'?'remote':'')+'">'+job.mode+'</span><span class="tag">'+job.exp+' Level</span>'+(job.isPosted?'<span class="tag posted-badge">🆕 Just Posted</span>':'');
+  document.getElementById('modal-reqs').innerHTML = (job.reqs||['See job description for requirements']).map(function(r){return '<li>'+r+'</li>'}).join('');
+  window._modalJob = job;
+  openModal('jobModal');
+}
+function saveJobModal() {
+  if(!window._modalJob) return;
+  var already = APP.savedJobs.find(function(j){return j.id===window._modalJob.id});
+  if(already){toast('Already saved!','info');return;}
+  APP.savedJobs.push(window._modalJob);
+  toast('Saved to your job list! 🔖','success');
+  closeModal('jobModal');
+}
+function applyJob() {
+  closeModal('jobModal');
+  if(!APP.isLoggedIn){showPage('signin');toast('Please sign in to apply for jobs','info');return;}
+  if(window._modalJob) APP.applications.unshift({id:Date.now(),title:window._modalJob.title,company:window._modalJob.company,date:'Just now',status:'pending'});
+  toast('Application submitted! Good luck! 🚀','success');
+}
+
+// ---- HOME FEATURED ----
+function initHomeFeatured() {
+  var container = document.getElementById('home-featured-jobs');
+  if(!container) return;
+  container.innerHTML = '';
+  var featured = ALL_JOBS.slice(0,6);
+  container.innerHTML = featured.map(function(job,i){return renderJobCard(job,i)}).join('');
+}
+
+function renderJobCard(job,i) {
+  var delay = (i||0)*0.06;
+  var isPostedBadge = job.isPosted ? '<span class="tag posted-badge">🆕 New</span>' : '';
+  return '<div class="job-card anim-up" style="animation-delay:'+delay+'s" onclick="openJobModal('+JSON.stringify(job).replace(/'/g,"&#39;").replace(/"/g,"&quot;")+',true)">'
+    +'<div class="job-card-header"><div><div class="company-logo" style="background:'+job.color+';color:'+job.tc+'">'+job.logo+'</div><div class="company-name" style="margin-top:7px">'+job.company+'</div></div>'
+    +'<button class="bookmark-btn" onclick="event.stopPropagation();bookmarkJobById('+job.id+')" title="Save job">🔖</button></div>'
+    +'<div class="job-title">'+job.title+'</div>'
+    +'<div class="job-tags"><span class="tag '+(job.type==='Full-time'?'full-time':job.type==='Contract'?'contract':'part-time')+'">'+job.type+'</span><span class="tag '+(job.mode==='Remote'?'remote':'')+'">'+job.mode+'</span><span class="tag">'+job.exp+'</span>'+isPostedBadge+'</div>'
+    +'<div class="job-footer"><div><div class="job-salary">'+job.salary+'</div><div class="job-time">'+job.location+' • '+job.time+'</div></div>'
+    +'<button class="apply-btn" onclick="event.stopPropagation();quickApply('+job.id+')">Apply Now</button></div>'
+    +'</div>';
+}
+
+// Open modal by passing the job object directly (handles both id-lookup and object)
+function openJobModalById(id) {
+  var job = ALL_JOBS.find(function(j){return j.id===id});
+  if(job) openJobModal(job);
+}
+
+function quickApply(jobId) {
+  var job = ALL_JOBS.find(function(j){return j.id===jobId});
+  if(!job) return;
+  window._modalJob = job;
+  applyJob();
+}
+
+function bookmarkJobById(jobId) {
+  var job = ALL_JOBS.find(function(j){return j.id===jobId});
+  if(!job) return;
+  var already = APP.savedJobs.find(function(j){return j.id===jobId});
+  if(already){
+    APP.savedJobs = APP.savedJobs.filter(function(j){return j.id!==jobId});
+    toast('Removed from saved jobs','info');
+  } else {
+    APP.savedJobs.push(job);
+    toast('Saved! 🔖','success');
+  }
+}
+
+// ---- FIND JOBS ----
+var _fj_initialized = false;
+function initFindJobs() {
+  if(!_fj_initialized){
+    _fj_initialized = true;
+    document.querySelectorAll('.flt').forEach(function(cb){
+      cb.addEventListener('change', applyFilters);
+    });
+  }
+  applyFilters();
+}
+
+function applyFilters() {
+  var query = (document.getElementById('jobs-search')||{}).value || '';
+  var loc = (document.getElementById('jobs-loc')||{}).value || '';
+  var salMax = parseInt((document.getElementById('salarySlider')||{}).value||300);
+  var activeTypes = [], activeModes = [], activeExps = [];
+  document.querySelectorAll('.flt[data-type="type"]:checked').forEach(function(cb){activeTypes.push(cb.value)});
+  document.querySelectorAll('.flt[data-type="mode"]:checked').forEach(function(cb){activeModes.push(cb.value)});
+  document.querySelectorAll('.flt[data-type="exp"]:checked').forEach(function(cb){activeExps.push(cb.value)});
+
+  var filtered = ALL_JOBS.filter(function(job){
+    var q = query.toLowerCase();
+    var matchQ = !q || job.title.toLowerCase().includes(q)||job.company.toLowerCase().includes(q)||job.category.toLowerCase().includes(q)||(job.desc&&job.desc.toLowerCase().includes(q));
+    var matchLoc = !loc || job.location.toLowerCase().includes(loc.toLowerCase())||job.mode.toLowerCase().includes(loc.toLowerCase());
+    var matchType = activeTypes.length===0||activeTypes.includes(job.type);
+    var matchMode = activeModes.length===0||activeModes.includes(job.mode);
+    var matchExp = activeExps.length===0||activeExps.some(function(e){return job.exp.toLowerCase().startsWith(e.toLowerCase())});
+    var matchSal = job.salaryMin <= salMax;
+    if(APP.activeCategoryFilter) { var matchCat = job.category.toLowerCase().includes(APP.activeCategoryFilter.toLowerCase())||job.company.toLowerCase().includes(APP.activeCategoryFilter.toLowerCase()); return matchQ&&matchLoc&&matchType&&matchMode&&matchExp&&matchSal&&matchCat; }
+    return matchQ&&matchLoc&&matchType&&matchMode&&matchExp&&matchSal;
+  });
+
+  var sortVal = (document.getElementById('sort-select')||{}).value||'newest';
+  if(sortVal==='salary-high') filtered.sort(function(a,b){return b.salaryMax-a.salaryMax});
+  else if(sortVal==='salary-low') filtered.sort(function(a,b){return a.salaryMin-b.salaryMin});
+  else if(sortVal==='newest') filtered.sort(function(a,b){return (b.isPosted?1:0)-(a.isPosted?1:0)});
+  else if(sortVal==='relevant'&&query) filtered.sort(function(a,b){
+    var aS = (a.title.toLowerCase().includes(query.toLowerCase())?2:0)+(a.company.toLowerCase().includes(query.toLowerCase())?1:0);
+    var bS = (b.title.toLowerCase().includes(query.toLowerCase())?2:0)+(b.company.toLowerCase().includes(query.toLowerCase())?1:0);
+    return bS-aS;
+  });
+
+  var label = document.getElementById('jobs-count-label');
+  if(label) label.innerHTML = 'Showing <strong>'+filtered.length+'</strong> Jobs'+(query?' for "<strong>'+query+'</strong>"':'');
+
+  var chips = document.getElementById('active-filter-chips');
+  if(chips){
+    var chipHtml = '';
+    if(query) chipHtml += '<span class="filter-chip">'+query+' <button onclick="clearSearch()">✕</button></span>';
+    if(loc) chipHtml += '<span class="filter-chip">'+loc+' <button onclick="clearLoc()">✕</button></span>';
+    if(APP.activeCategoryFilter) chipHtml += '<span class="filter-chip">'+APP.activeCategoryFilter+' <button onclick="APP.activeCategoryFilter=\'\';applyFilters()">✕</button></span>';
+    if(chipHtml) chipHtml += '<span class="clear-all" onclick="clearAllFilters()">Clear All</span>';
+    chips.innerHTML = chipHtml;
+  }
+
+  renderJobsGrid(filtered);
+  renderPagination(filtered.length);
+}
+
+function clearSearch(){var i=document.getElementById('jobs-search');if(i)i.value='';applyFilters()}
+function clearLoc(){var i=document.getElementById('jobs-loc');if(i)i.value='';applyFilters()}
+function clearAllFilters(){
+  var si=document.getElementById('jobs-search'),li=document.getElementById('jobs-loc');
+  if(si)si.value='';if(li)li.value='';
+  APP.activeCategoryFilter='';
+  document.querySelectorAll('.flt').forEach(function(cb){cb.checked=false});
+  applyFilters();
+}
+function resetFilters(){
+  document.querySelectorAll('.flt').forEach(function(cb){cb.checked=false});
+  var s=document.getElementById('salarySlider');if(s){s.value=300;updateSalary(300);}
+  applyFilters();
+  toast('Filters cleared','info');
+}
+function updateSalary(val){var l=document.getElementById('salary-max-label');if(l)l.textContent='Up to $'+val+'k'}
+function setQuickSearch(q){var i=document.getElementById('jobs-search');if(i){i.value=q;applyFilters();}}
+function filterByCategory(cat){APP.activeCategoryFilter=cat;showPage('find-jobs');}
+
+var _gridView = 'grid';
+function setView(view){
+  _gridView=view;
+  var g=document.getElementById('jobs-results-grid');
+  if(!g)return;
+  g.style.gridTemplateColumns=view==='list'?'1fr':'repeat(3,1fr)';
+  document.getElementById('grid-btn').classList.toggle('active',view==='grid');
+  document.getElementById('list-btn').classList.toggle('active',view==='list');
+}
+
+function renderJobsGrid(jobs) {
+  var g = document.getElementById('jobs-results-grid');
+  if(!g) return;
+  if(!jobs.length){
+    g.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">🔍</div><h4>No jobs found</h4><p>Try adjusting your search or filters</p></div>';
+    return;
+  }
+  var start = (APP.currentJobPage-1)*APP.jobsPerPage;
+  var paged = jobs.slice(start, start+APP.jobsPerPage);
+  g.innerHTML = paged.map(function(job,i){return renderJobCard(job,i)}).join('');
+  g.style.gridTemplateColumns = _gridView==='list'?'1fr':'repeat(3,1fr)';
+}
+
+function renderPagination(total) {
+  var w = document.getElementById('pagination-wrap');
+  if(!w) return;
+  var pages = Math.ceil(total/APP.jobsPerPage);
+  if(pages<=1){w.innerHTML='';return;}
+  var html = '<button class="page-btn nav" '+(APP.currentJobPage===1?'disabled style="opacity:.4"':'onclick="changePage('+(APP.currentJobPage-1)+')"')+'>← Prev</button>';
+  var start = Math.max(1,APP.currentJobPage-2), end = Math.min(pages,start+4);
+  for(var i=start;i<=end;i++) html+='<button class="page-btn'+(i===APP.currentJobPage?' active':'')+'" onclick="changePage('+i+')">'+i+'</button>';
+  if(end<pages) html+='<span style="color:var(--light)">...</span><button class="page-btn" onclick="changePage('+pages+')">'+pages+'</button>';
+  html+='<button class="page-btn nav" '+(APP.currentJobPage===pages?'disabled style="opacity:.4"':'onclick="changePage('+(APP.currentJobPage+1)+')"')+'>Next →</button>';
+  w.innerHTML = html;
+}
+function changePage(p){APP.currentJobPage=p;applyFilters();window.scrollTo({top:300,behavior:'smooth'})}
+
+// ---- LIVE SEARCH ----
+function handleSearch(inputId, panelId) {
+  var input = document.getElementById(inputId);
+  var panel = document.getElementById(panelId);
+  if(!input||!panel) return;
+  var q = input.value.trim().toLowerCase();
+  if(!q){panel.classList.remove('show');return;}
+  var results = ALL_JOBS.filter(function(j){
+    return j.title.toLowerCase().includes(q)||j.company.toLowerCase().includes(q)||j.category.toLowerCase().includes(q);
+  }).slice(0,6);
+  var companies = COMPANIES_DATA.filter(function(c){
+    return c.name.toLowerCase().includes(q)||c.desc.toLowerCase().includes(q);
+  }).slice(0,3);
+  var html = '';
+  if(results.length){
+    html += '<div class="search-results-header">Jobs</div>';
+    html += results.map(function(j){
+      return '<div class="search-result-item" onclick="handleSearchSelect(\''+inputId+'\',\''+panelId+'\','+j.id+')">'
+        +'<div class="sri-icon" style="background:'+j.color+';color:'+j.tc+'">'+j.logo+'</div>'
+        +'<div><div class="sri-title">'+j.title+'</div><div class="sri-meta">'+j.company+' • '+j.mode+'</div></div>'
+        +'<div class="sri-salary">'+j.salary+'</div></div>';
+    }).join('');
+  }
+  if(companies.length&&inputId==='co-search'){
+    html += '<div class="search-results-header">Companies</div>';
+    html += companies.map(function(c){
+      return '<div class="search-result-item" onclick="filterCompanies(\''+c.name+'\')">'
+        +'<div class="sri-icon" style="color:'+c.color+'">'+c.logo+'</div>'
+        +'<div><div class="sri-title">'+c.name+'</div><div class="sri-meta">'+c.desc+'</div></div>'
+        +'<div class="sri-salary">'+c.jobs+' jobs</div></div>';
+    }).join('');
+  }
+  if(!html) html = '<div class="search-no-results">No results for "'+q+'"</div>';
+  panel.innerHTML = html;
+  panel.classList.add('show');
+}
+
+function handleSearchSelect(inputId, panelId, jobId) {
+  document.getElementById(panelId).classList.remove('show');
+  var job = ALL_JOBS.find(function(j){return j.id===jobId});
+  if(!job) return;
+  var input = document.getElementById(inputId);
+  if(input) input.value = job.title;
+  if(inputId==='home-search'){showPage('find-jobs');}
+  setTimeout(function(){openJobModal(job)},200);
+}
+
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.search-wrap')&&!e.target.closest('.search-results-panel')) {
+    document.querySelectorAll('.search-results-panel').forEach(function(p){p.classList.remove('show')});
+  }
+});
+
+function doSearch() {
+  var q = document.getElementById('home-search').value;
+  if(q){document.getElementById('jobs-search').value=q;}
+  showPage('find-jobs');
+}
+
+// ---- COMPANIES ----
+function initCompanies() { filterCompanies(''); }
+function filterCompanies(q) {
+  q = q || (document.getElementById('co-search')||{}).value || '';
+  var panel = document.getElementById('co-results');
+  if(panel) panel.classList.remove('show');
+  var filtered = COMPANIES_DATA.filter(function(c){
+    return !q || c.name.toLowerCase().includes(q.toLowerCase())||c.desc.toLowerCase().includes(q.toLowerCase());
+  });
+  var g = document.getElementById('companies-grid');
+  if(!g) return;
+  g.innerHTML = filtered.map(function(c,i){
+    var delay = i*0.07;
+    return '<div class="company-card anim-up" style="animation-delay:'+delay+'s">'
+      +'<div class="company-cover" style="background:linear-gradient(135deg,'+c.grad+')"></div>'
+      +'<div class="company-logo-wrap" style="color:'+c.color+'">'+c.logo+'</div>'
+      +'<div class="company-name-big">'+c.name+'</div>'
+      +'<div class="company-meta">⚙️ '+c.desc+' • 👥 '+c.size+' employees</div>'
+      +'<div class="job-tags"><span class="tag">Tech</span><span class="tag full-time">Hiring</span><span class="tag remote">Remote OK</span></div>'
+      +'<div class="company-stats"><div class="c-stat"><div class="c-stat-num">'+c.jobs+'</div><div class="c-stat-label">Open Roles</div></div><div class="c-stat"><div class="c-stat-num">⭐ '+c.rating+'</div><div class="c-stat-label">Rating</div></div></div>'
+      +'<div class="view-jobs-btn" onclick="filterByCategory(\''+c.name+'\')">View '+c.jobs+' Open Jobs →</div>'
+      +'</div>';
+  }).join('');
+}
+
+// ---- SALARIES ----
+function initSalaries() { renderSalaryTable(SALARIES_DATA); }
+function filterSalaries() {
+  var q = (document.getElementById('sal-search')||{}).value||'';
+  var filtered = SALARIES_DATA.filter(function(s){return !q||s.title.toLowerCase().includes(q.toLowerCase())});
+  renderSalaryTable(filtered);
+}
+function renderSalaryTable(data) {
+  var tbody = document.getElementById('salary-tbody');
+  if(!tbody) return;
+  if(!data.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--light)">No salary data found</td></tr>';return;}
+  tbody.innerHTML = data.map(function(s,i){
+    return '<tr style="animation:fadeInUp .4s ease '+(i*0.05)+'s both" onclick="toast(\'Detailed salary report for '+s.title+' loading...\',\'info\')">'
+      +'<td><strong>'+s.title+'</strong></td>'
+      +'<td>'+s.exp+'</td>'
+      +'<td><div class="salary-bar-wrap"><div class="salary-bar" style="width:'+s.pct+'%"></div><span class="salary-range">$'+s.min+'k – $'+s.max+'k</span></div></td>'
+      +'<td><span class="salary-growth'+(s.growth.startsWith('-')?' neg':'')+'">'+s.growth+'</span></td>'
+      +'<td>'+s.openings.toLocaleString()+'</td>'
+      +'</tr>';
+  }).join('');
+}
+
+// ---- CAREER ADVICE ----
+function initAdvice() {
+  var g = document.getElementById('advice-grid');
+  if(!g||g.children.length>0) return;
+  g.innerHTML = ADVICE_DATA.map(function(a,i){
+    return '<div class="advice-card anim-up" style="animation-delay:'+(i*0.08)+'s;cursor:pointer" onclick="window.open(\''+a.url+'\',\'_blank\')">'
+      +'<div class="advice-img" style="background:'+a.bg+'">'+a.emoji+'</div>'
+      +'<div class="advice-body"><span class="advice-category">'+a.cat+'</span><div class="advice-title">'+a.title+'</div>'
+      +'<div class="advice-meta"><span>📅 '+a.date+'</span><span>⏱ '+a.read+' read</span></div>'
+      +'<a href="'+a.url+'" target="_blank" rel="noopener noreferrer" class="read-more" onclick="event.stopPropagation()">Read Article → <span style="font-size:.7rem;opacity:.7">↗</span></a>'
+      +'</div></div>';
+  }).join('');
+}
+
+// ---- POST JOB ----
+function selectPlan(card) {
+  document.querySelectorAll('.pricing-card').forEach(function(c){c.classList.remove('selected')});
+  card.classList.add('selected');
+}
+
+// ============================================================
+//  UPDATED handlePostJob — adds listing directly to ALL_JOBS
+// ============================================================
+function handlePostJob() {
+  var title   = document.getElementById('pj-title').value.trim();
+  var company = document.getElementById('pj-company').value.trim();
+  var dept    = document.getElementById('pj-dept').value.trim();
+  var type    = document.getElementById('pj-type').value;
+  var mode    = document.getElementById('pj-mode').value;
+  var location= document.getElementById('pj-location').value.trim() || 'Remote';
+  var minSal  = parseInt(document.getElementById('pj-min-sal').value) || 0;
+  var maxSal  = parseInt(document.getElementById('pj-max-sal').value) || 0;
+  var expLevel= document.getElementById('pj-explevel').value;
+  var about   = document.getElementById('pj-about').value.trim();
+  var resp    = document.getElementById('pj-resp').value.trim();
+  var req     = document.getElementById('pj-req').value.trim();
+
+  if(!title)  { toast('Please enter a Job Title','error'); return; }
+  if(!company){ toast('Please enter a Company Name','error'); return; }
+
+  // Build salary display string
+  var salaryStr;
+  if(minSal && maxSal)      salaryStr = '$'+Math.round(minSal/1000)+'k – $'+Math.round(maxSal/1000)+'k';
+  else if(minSal)           salaryStr = 'From $'+Math.round(minSal/1000)+'k';
+  else if(maxSal)           salaryStr = 'Up to $'+Math.round(maxSal/1000)+'k';
+  else                      salaryStr = 'Competitive';
+
+  // Derive category from department or title keywords
+  var cat = 'General';
+  var titleLower = title.toLowerCase();
+  var deptLower  = (dept||'').toLowerCase();
+  if(/engineer|developer|dev|software|frontend|backend|fullstack|ios|android/.test(titleLower)||/engineer/.test(deptLower)) cat='Software Engineering';
+  else if(/design|ux|ui|product design/.test(titleLower)||/design/.test(deptLower)) cat='Product Design';
+  else if(/data|analyst|scientist|ml|machine learning|ai/.test(titleLower)||/data/.test(deptLower)) cat='Data Science';
+  else if(/product manager|pm/.test(titleLower)||/product/.test(deptLower)) cat='Product Management';
+  else if(/market|growth|seo|content/.test(titleLower)||/market/.test(deptLower)) cat='Marketing';
+  else if(/ops|operation|logistics/.test(titleLower)||/ops/.test(deptLower)) cat='Operations';
+  else if(/execut|vp|chief|cto|ceo/.test(titleLower)) cat='Executive';
+
+  // Get initials for logo from company name
+  var words = company.trim().split(' ');
+  var logo = words.length >= 2 ? (words[0][0]+words[1][0]).toUpperCase() : company.slice(0,2).toUpperCase();
+
+  // Pick a colour palette (cycle through a few nice ones)
+  var palettes = [
+    {color:'#dbeafe',tc:'#1d4ed8'},{color:'#d1fae5',tc:'#065f46'},{color:'#ede9fe',tc:'#7c3aed'},
+    {color:'#fce7f3',tc:'#be185d'},{color:'#fef9c3',tc:'#a16207'},{color:'#fff7ed',tc:'#ea580c'},
+    {color:'#f0fdf4',tc:'#15803d'},{color:'#f0f9ff',tc:'#0284c7'},{color:'#ffe4e6',tc:'#e11d48'},
+  ];
+  var palette = palettes[ALL_JOBS.length % palettes.length];
+
+  // Parse requirements into array
+  var reqs = req ? req.split('\n').map(function(r){return r.trim()}).filter(Boolean) : ['See job description'];
+
+  // Assemble the new job object
+  var newJob = {
+    id:       Date.now(),
+    title:    title,
+    company:  company,
+    location: location,
+    type:     type,
+    mode:     mode,
+    salary:   salaryStr,
+    salaryMin: minSal ? Math.round(minSal/1000) : 0,
+    salaryMax: maxSal ? Math.round(maxSal/1000) : 999,
+    time:     'Just now',
+    logo:     logo,
+    color:    palette.color,
+    tc:       palette.tc,
+    exp:      expLevel.replace(' Level','').replace('/Principal',''),
+    category: cat,
+    desc:     about || (resp ? 'Responsibilities: '+resp : 'See full job description for details.'),
+    reqs:     reqs,
+    isPosted: true   // flag so we can badge it
+  };
+
+  // Add to the top of ALL_JOBS so it appears first
+  ALL_JOBS.unshift(newJob);
+
+  // Reset the Find Jobs pagination so user lands on page 1
+  APP.currentJobPage = 1;
+  // Reset category filter so the new job isn't hidden
+  APP.activeCategoryFilter = '';
+  // Mark Find Jobs as needing re-init
+  _fj_initialized = false;
+
+  // Clear the form
+  ['pj-title','pj-company','pj-dept','pj-location','pj-min-sal','pj-max-sal','pj-about','pj-resp','pj-req'].forEach(function(id){
+    var el = document.getElementById(id); if(el) el.value='';
+  });
+
+  toast('Job published! 🎉 Now visible in Find Jobs.','success');
+
+  // Navigate to Find Jobs after a short delay so the toast is visible
+  setTimeout(function(){
+    showPage('find-jobs');
+  }, 1600);
+}
+
+// ---- DASHBOARD ----
+function showDashPanel(panel, el) {
+  document.querySelectorAll('.sidebar-item').forEach(function(i){i.classList.remove('active')});
+  if(el) el.classList.add('active');
+  APP.currentDashPanel = panel;
+  renderDashPanel(panel);
+}
+
+function renderDashPanel(panel) {
+  var container = document.getElementById('dash-content');
+  if(!container) return;
+  if(!APP.user) return;
+  var name = APP.user.name;
+  var initials = getInitials(name);
+  var firstName = name.split(' ')[0];
+  switch(panel) {
+    case 'overview': renderOverview(container, name, initials, firstName); break;
+    case 'search': renderDashSearch(container); break;
+    case 'applications': renderApplications(container); break;
+    case 'messages': renderMessages(container); break;
+    case 'profile': renderProfileSettings(container, name, initials); break;
+    default: renderOverview(container, name, initials, firstName);
+  }
+}
+
+function renderOverview(c, name, initials, firstName) {
+  c.innerHTML = '<div class="dash-header"><div><h2>Welcome back, '+firstName+'! 👋</h2><p>Dashboard Overview • '+name+(APP.user.via==='google'?' — Google Account':' — Premium Member')+'</p></div>'
+    +'<div style="display:flex;align-items:center;gap:11px"><div style="position:relative;cursor:pointer" onclick="toast(\'3 new notifications! 🔔\',\'info\')">🔔<span style="position:absolute;top:-3px;right:-3px;width:7px;height:7px;background:var(--danger);border-radius:50%"></span></div>'
+    +'<div class="profile-avatar" style="width:38px;height:38px;font-size:.82rem;cursor:pointer" onclick="showDashPanel(\'profile\',document.getElementById(\'dash-nav-profile\'))">'+initials+'</div></div></div>'
+    +'<div class="profile-banner"><div class="profile-cover"></div>'
+    +'<div class="profile-info"><div class="profile-avatar-wrap"><div class="profile-avatar">'+initials+'</div></div>'
+    +'<div class="profile-text" style="margin-top:11px"><h3>'+name+'</h3><p>'+(APP.user.title||'Professional')+' • '+(APP.user.location||'Remote')+(APP.user.via==='google'?' • Google Account':'')+'</p></div>'
+    +'<div class="profile-actions"><button class="btn btn-outline btn-sm" onclick="showDashPanel(\'profile\',document.getElementById(\'dash-nav-profile\'))">✏️ Edit Profile</button><button class="btn btn-primary btn-sm" onclick="toast(\'Opening CV uploader...\',\'info\')">+ Update CV</button></div></div></div>'
+    +'<div class="stats-cards"><div class="stat-card d1"><div class="num">1,284</div><div class="label">Weekly Profile Views 📈</div></div>'
+    +'<div class="stat-card d2"><div class="num blue">'+APP.applications.length+'</div><div class="label">Jobs Applied</div></div>'
+    +'<div class="stat-card d3"><div class="num blue">8</div><div class="label">Interviews Scheduled</div></div>'
+    +'<div class="stat-card d4"><div class="num blue">42</div><div class="label">Job Matches</div></div></div>'
+    +'<div class="dash-grid">'
+    +'<div><div class="dash-card" style="margin-bottom:18px"><div class="dash-card-header"><div class="dash-card-title">Active Applications</div><div class="view-all-link" onclick="showDashPanel(\'applications\',document.getElementById(\'dash-nav-applications\'))">View All →</div></div>'
+    +APP.applications.slice(0,5).map(function(app){
+      var colors = {interview:'#dbeafe,#1d4ed8',pending:'#fef9c3,#a16207',rejected:'#fee2e2,#dc2626',offer:'#dcfce7,#16a34a'};
+      var c2 = (colors[app.status]||'#f1f5f9,#475569').split(',');
+      return '<div class="application-row" onclick="showDashPanel(\'applications\',document.getElementById(\'dash-nav-applications\'))">'
+        +'<div class="app-icon" style="background:'+c2[0]+';color:'+c2[1]+'">'+app.company.slice(0,2).toUpperCase()+'</div>'
+        +'<div class="app-info"><div class="app-title">'+app.title+'</div><div class="app-company">'+app.company+'</div></div>'
+        +'<div class="app-date">'+app.date+'</div>'
+        +'<span class="status-badge '+app.status+'">'+app.status.charAt(0).toUpperCase()+app.status.slice(1)+(app.status==='offer'?' ✨':'')+'</span></div>';
+    }).join('')+'</div>'
+    +'<div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">🔖 Saved for Later</div><div class="view-all-link">Manage</div></div>'
+    +(APP.savedJobs.length?'<div class="saved-jobs-grid">'+APP.savedJobs.slice(0,4).map(function(j){
+      return '<div class="saved-job-card" onclick="openJobModalById('+j.id+')">'
+        +'<div class="company-initial" style="background:'+j.color+';color:'+j.tc+'">'+j.logo+'</div>'
+        +'<div class="saved-job-badge">'+j.type+'</div><div class="saved-job-title">'+j.title+'</div>'
+        +'<div class="saved-job-company">'+j.company+'</div><div class="saved-job-salary">'+j.salary+'</div></div>';
+    }).join('')+'</div>'
+    :'<div class="empty-state"><div class="empty-icon">🔖</div><h4>No saved jobs yet</h4><p>Bookmark jobs while browsing to find them here</p><button class="btn btn-primary btn-sm" style="margin-top:12px" onclick="showPage(\'find-jobs\')">Browse Jobs</button></div>')
+    +'</div></div>'
+    +'<div><div class="dash-card" style="margin-bottom:18px"><div class="dash-card-title" style="margin-bottom:14px">Personal Hub</div>'
+    +'<div class="strength-header"><span class="strength-label">Profile Strength</span><span class="strength-pct">85%</span></div>'
+    +'<div class="strength-bar"><div class="strength-fill" style="width:85%"></div></div>'
+    +'<div class="strength-item">⏰ <div><div style="font-size:.8rem;font-weight:600">Experience added</div><div style="font-size:.73rem;color:var(--light)">Last updated recently</div></div></div>'
+    +'<div class="strength-item" style="cursor:pointer" onclick="showDashPanel(\'profile\',document.getElementById(\'dash-nav-profile\'))">➕ <div><div style="font-size:.8rem;font-weight:600;color:var(--primary)">Add professional summary</div><div style="font-size:.73rem;color:var(--success)">+10% Profile strength</div></div></div>'
+    +'<div class="upload-box" onclick="toast(\'Opening file upload...\',\'info\')"><div class="upload-icon">📄</div><div class="upload-label">Upload New Resume</div><div class="upload-sub">PDF, DOCX (Max 5MB)</div><button class="btn btn-outline btn-sm" style="margin-top:11px">Choose File</button></div></div>'
+    +'<div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">🎯 Recommended</div></div>'
+    +ALL_JOBS.slice(0,3).map(function(j){
+      return '<div class="application-row" style="cursor:pointer" onclick="openJobModalById('+j.id+')">'
+        +'<div class="app-icon" style="background:'+j.color+';color:'+j.tc+'">'+j.logo+'</div>'
+        +'<div class="app-info"><div class="app-title">'+j.title+'</div><div class="app-company">'+j.company+' • '+j.salary+'</div></div>'
+        +'<span class="tag new-badge">'+(j.isPosted?'Posted':'New')+'</span></div>';
+    }).join('')+'</div></div></div>';
+}
+
+function renderDashSearch(c) {
+  c.innerHTML = '<div class="dash-header"><div><h2>Job Search 🔍</h2><p>Search and apply to thousands of open roles</p></div></div>'
+    +'<div class="search-wrap" style="margin-bottom:22px"><div class="search-bar" style="margin:0"><span style="font-size:.97rem;color:var(--light)">🔍</span><input class="search-input" id="dash-search-input" placeholder="Job title, company, or keyword..." oninput="handleSearch(\'dash-search-input\',\'dash-search-results\')" autocomplete="off"><button class="btn btn-primary btn-sm" onclick="showPage(\'find-jobs\')">Browse All Jobs</button></div><div class="search-results-panel" id="dash-search-results"></div></div>'
+    +'<div class="dash-card"><div class="dash-card-header"><div class="dash-card-title">Recommended for You</div><div class="view-all-link" onclick="showPage(\'find-jobs\')">View All →</div></div>'
+    +'<div class="jobs-grid" style="margin-top:8px">'+ALL_JOBS.slice(0,6).map(function(j,i){return renderJobCard(j,i)}).join('')+'</div></div>';
+}
+
+function renderApplications(c) {
+  var statusColors = {interview:'#dbeafe,#1d4ed8',pending:'#fef9c3,#a16207',rejected:'#fee2e2,#dc2626',offer:'#dcfce7,#16a34a'};
+  c.innerHTML = '<div class="dash-header"><div><h2>My Applications 📋</h2><p>Track all your job applications in one place</p></div>'
+    +'<button class="btn btn-primary btn-sm" onclick="showPage(\'find-jobs\')">+ Browse Jobs</button></div>'
+    +'<div class="dash-card">'
+    +'<div style="display:flex;gap:9px;margin-bottom:18px">'
+    +'<span class="filter-chip" style="cursor:pointer">All ('+APP.applications.length+')</span>'
+    +['interview','pending','offer','rejected'].map(function(s){
+      var count = APP.applications.filter(function(a){return a.status===s}).length;
+      return count?'<span class="filter-chip" style="cursor:pointer">'+s.charAt(0).toUpperCase()+s.slice(1)+' ('+count+')</span>':'';
+    }).join('')+'</div>'
+    +(APP.applications.length?APP.applications.map(function(app){
+      var c2 = (statusColors[app.status]||'#f1f5f9,#475569').split(',');
+      return '<div class="application-row">'
+        +'<div class="app-icon" style="background:'+c2[0]+';color:'+c2[1]+'">'+app.company.slice(0,2).toUpperCase()+'</div>'
+        +'<div class="app-info"><div class="app-title">'+app.title+'</div><div class="app-company">'+app.company+'</div></div>'
+        +'<div class="app-date">'+app.date+'</div>'
+        +'<span class="status-badge '+app.status+'">'+app.status.charAt(0).toUpperCase()+app.status.slice(1)+(app.status==='offer'?' ✨':'')+'</span>'
+        +'</div>';
+    }).join(''):'<div class="empty-state"><div class="empty-icon">📋</div><h4>No applications yet</h4><p>Start applying to jobs to track them here</p><button class="btn btn-primary btn-sm" style="margin-top:12px" onclick="showPage(\'find-jobs\')">Browse Jobs</button></div>')
+    +'</div>';
+}
+
+function renderMessages(c) {
+  var convos = [
+    {id:1,name:'Sarah M.',company:'TechFlow Recruiter',preview:'Great! Can we schedule a call?',time:'2h ago',unread:true,msgs:[{s:'recv',t:'Hi! I saw your application for the Senior Frontend role.',ts:'10:30 AM'},{s:'sent',t:'Yes, I\'m very interested in the opportunity!',ts:'10:45 AM'},{s:'recv',t:'Great! Can we schedule a call?',ts:'11:00 AM'}]},
+    {id:2,name:'James K.',company:'Airbnb Hiring',preview:'Your portfolio looks amazing...',time:'1d ago',unread:true,msgs:[{s:'recv',t:'Your portfolio looks amazing! We\'d love to chat.',ts:'Yesterday'},{s:'sent',t:'Thank you so much! I\'d love to learn more.',ts:'Yesterday'}]},
+    {id:3,name:'HR Team',company:'Stripe Inc.',preview:'Congratulations on passing...',time:'2d ago',unread:true,msgs:[{s:'recv',t:'Congratulations on passing our initial screening!',ts:'2 days ago'},{s:'sent',t:'Thank you! I\'m excited about the opportunity.',ts:'2 days ago'},{s:'recv',t:'We\'d like to invite you to a technical interview.',ts:'2 days ago'}]},
+  ];
+  c.innerHTML = '<div class="dash-header"><div><h2>Messages 💬</h2><p>Chat with recruiters and hiring managers</p></div></div>'
+    +'<div style="display:grid;grid-template-columns:280px 1fr;gap:0;height:calc(100vh - 200px);border-radius:var(--radius-lg);overflow:hidden;border:1.5px solid var(--border)">'
+    +'<div style="background:#fff;border-right:1px solid var(--border);overflow-y:auto">'
+    +'<div class="msg-search"><input placeholder="Search conversations..." class="form-input" style="font-size:.84rem"></div>'
+    +convos.map(function(conv,i){
+      return '<div class="msg-item'+(i===0?' active':'')+'" onclick="loadConvo('+conv.id+',this)">'
+        +'<div class="msg-avatar" style="background:'+(i===0?'var(--primary)':i===1?'#e11d48':'#008060')+'">'+conv.name.split(' ')[0][0]+conv.name.split(' ')[1][0]+'</div>'
+        +'<div style="flex:1;min-width:0"><div class="msg-name">'+conv.name+'</div><div class="msg-preview">'+conv.preview+'</div></div>'
+        +'<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div class="msg-time">'+conv.time+'</div>'+(conv.unread?'<div class="msg-unread-dot"></div>':'')+'</div></div>';
+    }).join('')+'</div>'
+    +'<div class="chat-area" id="chat-area"><div class="chat-header"><div class="msg-avatar">SM</div><div><div class="chat-header-name">Sarah M. — TechFlow Recruiter</div><div class="chat-header-sub">● Online</div></div></div>'
+    +'<div class="chat-messages" id="chat-messages">'+convos[0].msgs.map(function(m){
+      return '<div class="chat-msg '+m.s+'"><div class="chat-bubble">'+m.t+'</div><div class="chat-time">'+m.ts+'</div></div>';
+    }).join('')+'</div>'
+    +'<div class="chat-input-area"><input class="chat-input" id="chat-msg-input" placeholder="Type a message..." onkeydown="if(event.key===\'Enter\')sendChatMsg()"><div class="chat-send" onclick="sendChatMsg()">➤</div></div></div></div>';
+  window._convos = convos;
+}
+
+function sendChatMsg() {
+  var input = document.getElementById('chat-msg-input');
+  if(!input||!input.value.trim()) return;
+  var msgs = document.getElementById('chat-messages');
+  if(!msgs) return;
+  var div = document.createElement('div');
+  div.className = 'chat-msg sent';
+  div.innerHTML = '<div class="chat-bubble">'+input.value+'</div><div class="chat-time">Just now</div>';
+  div.style.animation = 'fadeInUp .3s ease';
+  msgs.appendChild(div);
+  input.value = '';
+  msgs.scrollTop = msgs.scrollHeight;
+  setTimeout(function(){
+    var replies = ['Thanks for reaching out!','That sounds great, let me check availability.','We\'ll get back to you shortly.','Wonderful! Let\'s schedule a call.'];
+    var reply = document.createElement('div');
+    reply.className = 'chat-msg recv';
+    reply.innerHTML = '<div class="chat-bubble">'+replies[Math.floor(Math.random()*replies.length)]+'</div><div class="chat-time">Just now</div>';
+    reply.style.animation = 'fadeInUp .3s ease';
+    msgs.appendChild(reply);
+    msgs.scrollTop = msgs.scrollHeight;
+  },1200);
+}
+
+function loadConvo(id, el) {
+  document.querySelectorAll('.msg-item').forEach(function(i){i.classList.remove('active')});
+  el.classList.add('active');
+  var conv = window._convos.find(function(c){return c.id===id});
+  if(!conv) return;
+  var chatArea = document.getElementById('chat-area');
+  if(chatArea) {
+    chatArea.querySelector('.chat-header-name').textContent = conv.name+' — '+conv.company;
+    var msgs = document.getElementById('chat-messages');
+    msgs.innerHTML = conv.msgs.map(function(m){return '<div class="chat-msg '+m.s+'"><div class="chat-bubble">'+m.t+'</div><div class="chat-time">'+m.ts+'</div></div>'}).join('');
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+}
+
+function renderProfileSettings(c, name, initials) {
+  var user = APP.user;
+  var skills = user.skills && user.skills.length ? user.skills : ['JavaScript','React','TypeScript','CSS','Node.js'];
+  c.innerHTML = '<div class="dash-header"><div><h2>Profile Settings 👤</h2><p>Dashboard Overview • '+name+(user.via==='google'?' — Google Account':' — Premium Member')+'</p></div></div>'
+    +'<div class="profile-banner" style="margin-bottom:18px"><div class="profile-cover"></div>'
+    +'<div class="profile-info"><div class="profile-avatar-wrap"><div class="profile-avatar">'+initials+'</div></div>'
+    +'<div class="profile-text" style="margin-top:11px"><h3>'+name+'</h3><p>'+(user.title||'Professional')+' • '+(user.location||'Remote')+'</p></div>'
+    +'<div class="profile-actions"><button class="btn btn-primary btn-sm" onclick="saveProfileChanges()">💾 Save Changes</button></div></div></div>'
+    +'<div class="profile-edit-section"><h3>👤 Basic Information</h3>'
+    +'<div class="form-row"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" id="pe-fname" value="'+name.split(' ')[0]+'" placeholder="First Name"></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" id="pe-lname" value="'+(name.split(' ')[1]||'')+'" placeholder="Last Name"></div></div>'
+    +'<div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" id="pe-email" value="'+(user.email||'')+'" placeholder="you@example.com"></div>'
+    +'<div class="form-row"><div class="form-group"><label class="form-label">Job Title</label><input class="form-input" id="pe-title" value="'+(user.title||'')+'" placeholder="e.g. Senior Frontend Engineer"></div><div class="form-group"><label class="form-label">Location</label><input class="form-input" id="pe-location" value="'+(user.location||'')+'" placeholder="City, State"></div></div>'
+    +'<div class="form-group"><label class="form-label">Work Preference</label><select class="form-select" id="pe-workmode"><option'+((!user.workmode||user.workmode==='Remote')?' selected':'')+'>Remote</option><option'+(user.workmode==='Hybrid'?' selected':'')+'>Hybrid</option><option'+(user.workmode==='On-site'?' selected':'')+'>On-site</option></select></div>'
+    +'<div class="form-group"><label class="form-label">Professional Summary</label><textarea class="form-textarea" id="pe-summary" placeholder="Brief summary of your experience and goals...">'+(user.summary||'')+'</textarea></div>'
+    +'</div>'
+    +'<div class="profile-edit-section"><h3>🛠️ Skills</h3>'
+    +'<div id="pe-skills-wrap" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px">'+skills.map(function(s){return '<span class="skill-tag">'+s+'<button onclick="removePESkill(this)">✕</button></span>'}).join('')+'</div>'
+    +'<div class="skill-input-wrap"><input class="form-input" id="pe-skill-input" placeholder="Add a skill..." onkeydown="if(event.key===\'Enter\'){event.preventDefault();addPESkill()}"><button class="add-skill-btn" onclick="addPESkill()">+ Add</button></div>'
+    +'</div>'
+    +'<div class="profile-edit-section"><h3>🔗 Links & Portfolio</h3>'
+    +'<div class="form-group"><label class="form-label">LinkedIn URL</label><input class="form-input" id="pe-linkedin" value="'+(user.linkedin||'')+'" placeholder="https://linkedin.com/in/yourname"></div>'
+    +'<div class="form-group"><label class="form-label">GitHub / Portfolio URL</label><input class="form-input" id="pe-github" value="'+(user.github||'')+'" placeholder="https://github.com/yourname"></div>'
+    +'<div class="form-group"><label class="form-label">Personal Website</label><input class="form-input" id="pe-website" value="'+(user.website||'')+'" placeholder="https://yoursite.com"></div>'
+    +'</div>'
+    +'<div class="profile-edit-section"><h3>📄 Documents</h3>'
+    +'<div class="file-upload-area" id="pe-cv-area" onclick="triggerFileUpload(\'pe-cv-file\')" style="margin-bottom:14px">'
+    +'<input type="file" id="pe-cv-file" accept=".pdf,.doc,.docx" style="display:none" onchange="handleFileUpload(this,\'pe-cv-area\',\'pe-cv-label\')">'
+    +'<div class="upload-icon">📄</div><div class="upload-label" id="pe-cv-label">'+(user.cvFile||'Click to upload Resume/CV')+'</div><div class="upload-sub">PDF, DOC, DOCX (Max 5MB)</div></div>'
+    +'<div class="file-upload-area" id="pe-portfolio-area" onclick="triggerFileUpload(\'pe-portfolio-file\')">'
+    +'<input type="file" id="pe-portfolio-file" accept=".pdf,.zip,.png,.jpg" style="display:none" onchange="handleFileUpload(this,\'pe-portfolio-area\',\'pe-portfolio-label\')">'
+    +'<div class="upload-icon">🖼️</div><div class="upload-label" id="pe-portfolio-label">'+(user.portfolioFile||'Click to upload Portfolio')+'</div><div class="upload-sub">PDF, ZIP, Images (Max 20MB)</div></div>'
+    +'</div>'
+    +'<div class="profile-edit-section"><h3>⚠️ Account</h3>'
+    +'<div style="display:flex;gap:12px;flex-wrap:wrap">'
+    +'<button class="btn btn-outline" onclick="toast(\'Password reset email sent!\',\'info\')">Change Password</button>'
+    +'<button class="btn btn-danger btn-sm" onclick="if(confirm(\'Are you sure? You will be signed out.\'))signOut()">Delete Account</button>'
+    +'</div></div>'
+    +'<div style="display:flex;gap:12px;justify-content:flex-end;margin-top:8px">'
+    +'<button class="btn btn-outline" onclick="renderDashPanel(\'overview\')">Cancel</button>'
+    +'<button class="btn btn-primary" onclick="saveProfileChanges()">💾 Save All Changes</button>'
+    +'</div>';
+}
+
+function addPESkill() {
+  var input = document.getElementById('pe-skill-input');
+  if(!input||!input.value.trim()) return;
+  var wrap = document.getElementById('pe-skills-wrap');
+  if(!wrap) return;
+  var span = document.createElement('span');
+  span.className = 'skill-tag';
+  span.innerHTML = input.value.trim()+'<button onclick="removePESkill(this)">✕</button>';
+  span.style.animation = 'scaleIn .25s ease';
+  wrap.appendChild(span);
+  input.value = '';
+}
+function removePESkill(btn) {
+  var span = btn.closest('.skill-tag');
+  if(span){span.style.transform='scale(0)';span.style.transition='transform .2s';setTimeout(function(){span.remove()},200);}
+}
+function saveProfileChanges() {
+  if(!APP.user) return;
+  var fname = (document.getElementById('pe-fname')||{}).value||'';
+  var lname = (document.getElementById('pe-lname')||{}).value||'';
+  if(fname) {
+    APP.user.name = (fname+' '+lname).trim();
+    APP.user.title = (document.getElementById('pe-title')||{}).value||APP.user.title;
+    APP.user.location = (document.getElementById('pe-location')||{}).value||APP.user.location;
+    APP.user.summary = (document.getElementById('pe-summary')||{}).value||'';
+    APP.user.linkedin = (document.getElementById('pe-linkedin')||{}).value||'';
+    APP.user.github = (document.getElementById('pe-github')||{}).value||'';
+    APP.user.website = (document.getElementById('pe-website')||{}).value||'';
+    var skillTags = document.querySelectorAll('#pe-skills-wrap .skill-tag');
+    APP.user.skills = Array.from(skillTags).map(function(s){return s.textContent.replace('✕','').trim()});
+    APP.user.avatar = getInitials(APP.user.name);
+    updateNavActions();
+  }
+  toast('Profile saved successfully! ✓','success');
+}
+
+// ================================================================
+//  HyrUp AI Chatbot — Claude-powered career assistant
+// ================================================================
+
+var BOT = {
+  open: false,
+  loading: false,
+  history: [],   // {role, content}
+  badgeShown: false,
+  SYSTEM: [
+    'You are HyrUp AI, a friendly and expert career assistant built into the HyrUp job platform.',
+    'You help users with: finding jobs, resume writing, salary negotiation, interview preparation, career advice, and understanding the job market.',
+    'Keep responses concise (2-4 sentences unless the user asks for detail). Use friendly, encouraging language.',
+    'You have awareness of the following job categories on HyrUp: Software Engineering, Product Design, Data Science, Product Management, Marketing & Sales, Content Strategy, Operations, Executive Roles.',
+    'When users ask about jobs, suggest they use the Find Jobs page or the search bar. You can mention salary ranges and skills based on general market knowledge.',
+    'Never make up specific job listings — instead encourage them to browse HyrUp.',
+    'Occasionally use relevant emojis to keep the tone warm but professional.',
+  ].join(' ')
+};
+
+function toggleBot() {
+  BOT.open = !BOT.open;
+  var wrap = document.getElementById('hyrBot');
+  var fab  = document.getElementById('hyrBotFab');
+  var icon = document.getElementById('botFabIcon');
+  var badge= document.getElementById('botBadge');
+  if(BOT.open) {
+    wrap.classList.add('open');
+    icon.textContent = '✕';
+    badge.style.display = 'none';
+    BOT.badgeShown = false;
+    if(BOT.history.length === 0) botGreet();
+    setTimeout(function(){ document.getElementById('botInput').focus(); }, 150);
+  } else {
+    wrap.classList.remove('open');
+    icon.textContent = '⚡';
+  }
+}
+
+function botGreet() {
+  var userName = APP.isLoggedIn ? APP.user.name.split(' ')[0] : '';
+  var greeting = userName
+    ? 'Hi ' + userName + '! 👋 I\'m your HyrUp AI assistant. I can help you find the right job, polish your resume, prep for interviews, or negotiate your salary. What can I help you with today?'
+    : 'Hi there! 👋 I\'m your HyrUp AI career assistant. I can help you find jobs, improve your resume, prep for interviews, or give salary insights. What\'s on your mind?';
+  botAppendMessage('assistant', greeting);
+}
+
+function botChipClick(el) {
+  var text = el.textContent;
+  // hide chips after first use
+  document.getElementById('botChips').style.display = 'none';
+  botAppendMessage('user', text);
+  botCallAPI(text);
+}
+
+function botSend() {
+  var input = document.getElementById('botInput');
+  var text  = (input.value || '').trim();
+  if(!text || BOT.loading) return;
+  input.value = '';
+  // Hide chips once user starts chatting
+  document.getElementById('botChips').style.display = 'none';
+  botAppendMessage('user', text);
+  botCallAPI(text);
+}
+
+function botAppendMessage(role, text) {
+  BOT.history.push({ role: role, content: text });
+  var container = document.getElementById('botMessages');
+  var isUser = role === 'user';
+  var div = document.createElement('div');
+  div.className = 'bot-msg ' + role;
+  var avatarLabel = isUser ? (APP.isLoggedIn ? getInitials(APP.user.name) : 'U') : '⚡';
+  div.innerHTML =
+    '<div class="bot-msg-avatar">' + avatarLabel + '</div>' +
+    '<div class="bot-bubble">' + botFormatText(text) + '</div>';
+  div.style.animation = 'fadeInUp .3s ease both';
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function botFormatText(text) {
+  // Convert **bold**, *italic*, and newlines to HTML safely
+  var safe = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  safe = safe.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  safe = safe.replace(/\*(.+?)\*/g, '<em>$1</em>');
+  safe = safe.replace(/\n/g, '<br>');
+  return safe;
+}
+
+function botShowTyping() {
+  var container = document.getElementById('botMessages');
+  var div = document.createElement('div');
+  div.className = 'bot-msg assistant';
+  div.id = 'botTypingIndicator';
+  div.innerHTML =
+    '<div class="bot-msg-avatar">⚡</div>' +
+    '<div class="bot-typing"><span></span><span></span><span></span></div>';
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function botHideTyping() {
+  var el = document.getElementById('botTypingIndicator');
+  if(el) el.remove();
+}
+
+function botSetLoading(val) {
+  BOT.loading = val;
+  var btn = document.getElementById('botSendBtn');
+  var inp = document.getElementById('botInput');
+  if(btn) btn.disabled = val;
+  if(inp) inp.disabled = val;
+}
+
+async function botCallAPI(userMessage) {
+  botSetLoading(true);
+  botShowTyping();
+
+  // Build messages array for API — keep last 12 turns to stay within context
+  var apiMessages = BOT.history.slice(-12).map(function(m) {
+    return { role: m.role, content: m.content };
+  });
+
+  try {
+    var response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: BOT.SYSTEM,
+        messages: apiMessages
+      })
+    });
+
+    var data = await response.json();
+    botHideTyping();
+
+    if(data && data.content && data.content[0] && data.content[0].text) {
+      var reply = data.content[0].text;
+      botAppendMessage('assistant', reply);
+    } else if(data.error) {
+      botAppendMessage('assistant', 'Sorry, I ran into an issue (' + (data.error.message||'unknown') + '). Please try again! 🙏');
+    } else {
+      botAppendMessage('assistant', 'Hmm, I didn\'t get a proper response. Try again in a moment!');
+    }
+  } catch(err) {
+    botHideTyping();
+    botAppendMessage('assistant', 'I\'m having trouble connecting right now. Check your connection and try again! 🔌');
+    console.error('Bot API error:', err);
+  }
+
+  botSetLoading(false);
+
+  // Show notification badge if bot is closed
+  if(!BOT.open && !BOT.badgeShown) {
+    var badge = document.getElementById('botBadge');
+    if(badge) { badge.style.display = 'flex'; BOT.badgeShown = true; }
+  }
+}
+
+// FAB init is handled in the main DOMContentLoaded below
+
+// ================================================================
+//  HyrUp DBMS  —  localStorage-backed relational-style store
+//  Tables: jobs | users | applications | saved_jobs | sessions
+//  Each table is a JSON array stored under key "hyrup_<table>"
+// ================================================================
+
+var DB = (function(){
+  var PREFIX = 'hyrup_';
+
+  // ── Core helpers ──────────────────────────────────────────────
+  function _read(table){ try{ return JSON.parse(localStorage.getItem(PREFIX+table)||'[]'); }catch(e){ return []; } }
+  function _write(table,rows){ try{ localStorage.setItem(PREFIX+table, JSON.stringify(rows)); return true; }catch(e){ console.error('DB write error',e); return false; } }
+  function _nextId(rows){ return rows.reduce(function(m,r){ return Math.max(m, r._id||0); },0)+1; }
+  function _meta(){ try{ return JSON.parse(localStorage.getItem(PREFIX+'_meta')||'{}'); }catch(e){ return {}; } }
+  function _writeMeta(m){ localStorage.setItem(PREFIX+'_meta', JSON.stringify(m)); }
+
+  // ── Schema registry ───────────────────────────────────────────
+  var SCHEMA = {
+    jobs:         { pk:'_id', indexes:['company','category','type','mode','exp','isPosted'], unique:[] },
+    users:        { pk:'_id', indexes:['email'],  unique:['email'] },
+    applications: { pk:'_id', indexes:['userId','jobId','status'], unique:[] },
+    saved_jobs:   { pk:'_id', indexes:['userId','jobId'],          unique:['userId,jobId'] },
+    sessions:     { pk:'_id', indexes:['userId'],                  unique:[] },
+    audit_log:    { pk:'_id', indexes:['table','action'],          unique:[] }
+  };
+
+  // ── Audit logging ─────────────────────────────────────────────
+  function _log(table, action, record){
+    var logs = _read('audit_log');
+    logs.push({ _id: _nextId(logs), table:table, action:action, record: record, ts: new Date().toISOString() });
+    if(logs.length > 500) logs = logs.slice(-500); // cap
+    _write('audit_log', logs);
+  }
+
+  // ── INSERT ────────────────────────────────────────────────────
+  function insert(table, data){
+    var rows = _read(table);
+    // Unique constraint check
+    var schema = SCHEMA[table]||{};
+    (schema.unique||[]).forEach(function(uKey){
+      var cols = uKey.split(',');
+      var clash = rows.find(function(r){
+        return cols.every(function(c){ return r[c] !== undefined && r[c] === data[c]; });
+      });
+      if(clash) throw new Error('Unique constraint violation on '+table+'.'+uKey);
+    });
+    var row = Object.assign({}, data, { _id: _nextId(rows), _createdAt: new Date().toISOString() });
+    rows.push(row);
+    _write(table, rows);
+    _log(table,'INSERT', row);
+    return row;
+  }
+
+  // ── SELECT ────────────────────────────────────────────────────
+  function select(table, where, opts){
+    var rows = _read(table);
+    opts = opts||{};
+    if(where){
+      rows = rows.filter(function(r){
+        return Object.keys(where).every(function(k){
+          var v = where[k];
+          if(v && typeof v === 'object' && v.$like !== undefined)
+            return String(r[k]||'').toLowerCase().includes(String(v.$like).toLowerCase());
+          if(v && typeof v === 'object' && v.$gte !== undefined) return r[k] >= v.$gte;
+          if(v && typeof v === 'object' && v.$lte !== undefined) return r[k] <= v.$lte;
+          if(v && typeof v === 'object' && v.$in !== undefined)  return v.$in.includes(r[k]);
+          if(v && typeof v === 'object' && v.$ne !== undefined)  return r[k] !== v.$ne;
+          return r[k] === v;
+        });
+      });
+    }
+    if(opts.orderBy){
+      var ob = opts.orderBy, dir = opts.order==='desc'?-1:1;
+      rows = rows.slice().sort(function(a,b){ return a[ob]>b[ob]?dir:a[ob]<b[ob]?-dir:0; });
+    }
+    if(opts.limit) rows = rows.slice(0, opts.limit);
+    return rows;
+  }
+
+  // ── SELECT ONE ────────────────────────────────────────────────
+  function findOne(table, where){ return select(table, where)[0]||null; }
+
+  // ── UPDATE ────────────────────────────────────────────────────
+  function update(table, where, data){
+    var rows = _read(table); var count=0;
+    rows = rows.map(function(r){
+      var match = !where || Object.keys(where).every(function(k){ return r[k]===where[k]; });
+      if(match){ count++; return Object.assign({},r,data,{_updatedAt:new Date().toISOString()}); }
+      return r;
+    });
+    _write(table, rows);
+    if(count) _log(table,'UPDATE',{where:where,data:data,affected:count});
+    return count;
+  }
+
+  // ── DELETE ────────────────────────────────────────────────────
+  function remove(table, where){
+    var rows = _read(table); var orig=rows.length;
+    rows = rows.filter(function(r){
+      return !(!where || Object.keys(where).every(function(k){ return r[k]===where[k]; }));
+    });
+    _write(table, rows);
+    var deleted = orig - rows.length;
+    if(deleted) _log(table,'DELETE',{where:where,deleted:deleted});
+    return deleted;
+  }
+
+  // ── COUNT ─────────────────────────────────────────────────────
+  function count(table, where){ return select(table,where).length; }
+
+  // ── TRUNCATE ─────────────────────────────────────────────────
+  function truncate(table){ _write(table,[]); _log(table,'TRUNCATE',{}); }
+
+  // ── DROP ALL (reset) ──────────────────────────────────────────
+  function dropAll(){
+    Object.keys(SCHEMA).forEach(function(t){ localStorage.removeItem(PREFIX+t); });
+    localStorage.removeItem(PREFIX+'_meta');
+  }
+
+  // ── RAW SQL-LIKE QUERY EXECUTOR (simple, for the admin panel) ─
+  // Supports: SELECT * FROM table [WHERE col=val] [LIMIT n]
+  //           INSERT INTO table VALUES (json)
+  //           DELETE FROM table WHERE col=val
+  //           UPDATE table SET col=val WHERE col=val
+  function execQuery(sql){
+    sql = (sql||'').trim().replace(/\s+/g,' ');
+    var result = { rows:[], affected:0, error:null, sql:sql };
+    try{
+      // SELECT
+      var m = sql.match(/^SELECT \* FROM (\w+)(?: WHERE (\w+)=([\w@.\-]+))?(?: LIMIT (\d+))?$/i);
+      if(m){
+        var tbl=m[1], wh=null, lim=m[4]?parseInt(m[4]):undefined;
+        if(m[2]&&m[3]){ wh={}; wh[m[2]]=isNaN(m[3])?m[3]:Number(m[3]); }
+        result.rows = select(tbl, wh, lim?{limit:lim}:{});
+        result.affected = result.rows.length;
+        return result;
+      }
+      // COUNT
+      m = sql.match(/^SELECT COUNT\(\*\) FROM (\w+)(?: WHERE (\w+)=([\w@.\-]+))?$/i);
+      if(m){
+        var tbl2=m[1], wh2=null;
+        if(m[2]&&m[3]){ wh2={}; wh2[m[2]]=isNaN(m[3])?m[3]:Number(m[3]); }
+        result.rows=[{count:count(tbl2,wh2)}]; result.affected=1; return result;
+      }
+      // DELETE
+      m = sql.match(/^DELETE FROM (\w+) WHERE (\w+)=([\w@.\-]+)$/i);
+      if(m){
+        var wh3={}; wh3[m[2]]=isNaN(m[3])?m[3]:Number(m[3]);
+        result.affected = remove(m[1],wh3); return result;
+      }
+      // TRUNCATE
+      m = sql.match(/^TRUNCATE (\w+)$/i);
+      if(m){ truncate(m[1]); result.affected=1; return result; }
+      // SHOW TABLES
+      if(/^SHOW TABLES$/i.test(sql)){
+        result.rows = Object.keys(SCHEMA).map(function(t){
+          return {table:t, rows: count(t), schema: (SCHEMA[t].indexes||[]).join(', ')};
+        }); result.affected=result.rows.length; return result;
+      }
+      // SHOW LOGS
+      if(/^SHOW LOGS$/i.test(sql)){
+        result.rows = select('audit_log',null,{orderBy:'_id',order:'desc',limit:50});
+        result.affected=result.rows.length; return result;
+      }
+      result.error = 'Unsupported query. Try: SHOW TABLES | SELECT * FROM <table> | DELETE FROM <table> WHERE id=<n> | TRUNCATE <table>';
+    }catch(e){ result.error = e.message; }
+    return result;
+  }
+
+  // ── Stats for admin ───────────────────────────────────────────
+  function stats(){
+    return Object.keys(SCHEMA).map(function(t){
+      var rows = _read(t);
+      var m = _meta();
+      return { table:t, count:rows.length, size: JSON.stringify(rows).length };
+    });
+  }
+
+  // ── Seed from in-memory ALL_JOBS array (called on init) ───────
+  function seedJobs(jobs){
+    if(count('jobs')===0){
+      jobs.forEach(function(j){ try{ insert('jobs',j); }catch(e){} });
+    }
+  }
+
+  // ── Sync: push ALL_JOBS into DB, pull DB into ALL_JOBS ────────
+  function syncJobs(){
+    var dbJobs = select('jobs',null,{orderBy:'_createdAt',order:'desc'});
+    return dbJobs;
+  }
+
+  return { insert:insert, select:select, findOne:findOne, update:update, remove:remove,
+           count:count, truncate:truncate, dropAll:dropAll, execQuery:execQuery,
+           stats:stats, seedJobs:seedJobs, syncJobs:syncJobs, SCHEMA:SCHEMA };
+})();
+
+// ── Wire DBMS into app lifecycle ──────────────────────────────────
+function dbInit(){
+  DB.seedJobs(ALL_JOBS);
+  // Load any extra user-posted jobs from DB that aren't in the default array
+  var dbJobs = DB.syncJobs();
+  var existingIds = ALL_JOBS.map(function(j){ return j.id; });
+  dbJobs.forEach(function(j){
+    var key = j.id || j._id;
+    if(!existingIds.includes(key)){
+      j.id = key;
+      ALL_JOBS.unshift(j);
+    }
+  });
+}
+
+// Override loginUser to persist session + user to DB
+var _origLoginUser = loginUser;
+loginUser = function(userData){
+  // Upsert user record
+  var existing = DB.findOne('users',{email:userData.email});
+  if(!existing){
+    try{ var uRow = DB.insert('users', userData); userData._dbId = uRow._id; }catch(e){}
+  } else {
+    DB.update('users',{email:userData.email}, userData);
+    userData._dbId = existing._id;
+  }
+  // Create session
+  DB.insert('sessions',{ userId: userData._dbId||userData.email, via: userData.via, loginAt: new Date().toISOString() });
+  // Persist to localStorage for auto-login
+  try{ localStorage.setItem('hyrup_session_user', JSON.stringify(userData)); }catch(e){}
+  _origLoginUser(userData);
+};
+
+// Override signOut to clear session
+var _origSignOut = signOut;
+signOut = function(){
+  try{ localStorage.removeItem('hyrup_session_user'); }catch(e){}
+  _origSignOut();
+};
+
+// Override handlePostJob to also write to DB
+var _origHandlePostJob = handlePostJob;
+handlePostJob = function(){
+  // We call the original which pushes to ALL_JOBS first
+  _origHandlePostJob();
+  // Then persist the newly added job (now at ALL_JOBS[0] after unshift)
+  // We use a tiny delay to let the original finish
+  setTimeout(function(){
+    var newest = ALL_JOBS[0];
+    if(newest && newest.isPosted){
+      var alreadyInDB = DB.findOne('jobs',{ title: newest.title, company: newest.company });
+      if(!alreadyInDB){
+        try{ DB.insert('jobs', newest); }catch(e){}
+      }
+    }
+  }, 200);
+};
+
+// Override applyJob to persist to DB
+var _origApplyJob = applyJob;
+applyJob = function(){
+  _origApplyJob();
+  if(APP.isLoggedIn && window._modalJob){
+    var job = window._modalJob;
+    try{
+      DB.insert('applications',{
+        userId: APP.user._dbId||APP.user.email,
+        jobId:  job.id,
+        jobTitle: job.title,
+        company: job.company,
+        status: 'pending',
+        appliedAt: new Date().toISOString()
+      });
+    }catch(e){}
+  }
+};
+
+// Override saveJobModal to persist to DB
+var _origSaveJobModal = saveJobModal;
+saveJobModal = function(){
+  _origSaveJobModal();
+  if(window._modalJob && APP.isLoggedIn){
+    try{
+      DB.insert('saved_jobs',{
+        userId: APP.user._dbId||APP.user.email,
+        jobId:  window._modalJob.id,
+        jobTitle: window._modalJob.title,
+        savedAt: new Date().toISOString()
+      });
+    }catch(e){}
+  }
+};
+
+// ── DB Admin Panel ────────────────────────────────────────────────
+function renderDBAdmin(c){
+  var tableStats = DB.stats();
+  c.innerHTML = '<div class="dash-header"><div><h2>🗄️ Database Admin</h2><p>HyrUp DBMS — localStorage-backed relational store</p></div>'
+    +'<button class="btn btn-sm" style="background:#0f172a;color:#4ade80;font-family:monospace;border:1px solid #4ade80" onclick="dbRefreshAdmin()">↺ Refresh</button></div>'
+
+    // Stats cards
+    +'<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px">'
+    +tableStats.map(function(s){
+      return '<div class="stat-card" style="cursor:pointer" onclick="dbRunQuery(\'SELECT * FROM '+s.table+'\')"><div class="num blue" style="font-size:1.4rem">'+s.count+'</div><div class="label">'+s.table+'</div><div style="font-size:.65rem;color:var(--light);margin-top:2px">'+Math.round(s.size/1024*10)/10+' KB</div></div>';
+    }).join('')
+    +'</div>'
+
+    // Query terminal
+    +'<div class="dash-card" style="margin-bottom:18px;background:#0f172a;border-color:#1e293b">'
+    +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px"><span style="color:#4ade80;font-family:monospace;font-size:.85rem">▶ SQL Terminal</span>'
+    +'<span style="font-size:.72rem;color:#64748b;margin-left:auto">SHOW TABLES &nbsp;|&nbsp; SELECT * FROM jobs LIMIT 5 &nbsp;|&nbsp; SHOW LOGS</span></div>'
+    +'<div style="display:flex;gap:8px">'
+    +'<input id="db-query-input" style="flex:1;background:#1e293b;border:1px solid #334155;color:#e2e8f0;border-radius:8px;padding:10px 14px;font-family:monospace;font-size:.85rem;outline:none" placeholder="Enter SQL-like query..." onkeydown="if(event.key===\'Enter\')dbRunQuery()">'
+    +'<button onclick="dbRunQuery()" style="background:#4ade80;color:#0f172a;border-radius:8px;padding:10px 18px;font-weight:700;font-size:.82rem;flex-shrink:0">Run ▶</button></div>'
+    +'<div style="margin-top:10px;display:flex;gap:7px;flex-wrap:wrap">'
+    +['SHOW TABLES','SELECT * FROM jobs LIMIT 5','SELECT * FROM users','SELECT * FROM applications','SELECT * FROM saved_jobs','SHOW LOGS','SELECT COUNT(*) FROM jobs'].map(function(q){
+      return '<span onclick="dbRunQuery(\''+q+'\')" style="cursor:pointer;padding:3px 9px;background:#1e293b;color:#94a3b8;border-radius:50px;font-size:.72rem;font-family:monospace;border:1px solid #334155;transition:all .2s" onmouseover="this.style.borderColor=\'#4ade80\';this.style.color=\'#4ade80\'" onmouseout="this.style.borderColor=\'#334155\';this.style.color=\'#94a3b8\'">'+q+'</span>';
+    }).join('')
+    +'</div>'
+    +'<div id="db-query-results" style="margin-top:14px;max-height:340px;overflow:auto;border-radius:8px"></div>'
+    +'</div>'
+
+    // Entity Relationship Info
+    +'<div class="dash-card">'
+    +'<div class="dash-card-header"><div class="dash-card-title">📐 Schema & Relationships</div></div>'
+    +'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">'
+    +Object.keys(DB.SCHEMA).map(function(t){
+      var s = DB.SCHEMA[t];
+      return '<div style="background:var(--bg);border-radius:10px;padding:14px;border:1.5px solid var(--border)">'
+        +'<div style="font-family:\'Syne\',sans-serif;font-weight:700;font-size:.85rem;margin-bottom:8px;color:var(--primary)">🗃 '+t+'</div>'
+        +'<div style="font-size:.73rem;color:var(--mid);margin-bottom:4px"><b>PK:</b> '+s.pk+'</div>'
+        +'<div style="font-size:.73rem;color:var(--mid);margin-bottom:4px"><b>Indexes:</b> '+(s.indexes||[]).join(', ')+'</div>'
+        +(s.unique&&s.unique.length?'<div style="font-size:.73rem;color:#d97706"><b>Unique:</b> '+s.unique.join(', ')+'</div>':'')
+        +'<div style="font-size:.73rem;color:var(--success);margin-top:6px">'+DB.count(t)+' rows</div>'
+        +'</div>';
+    }).join('')
+    +'</div></div>'
+
+    // Danger zone
+    +'<div class="dash-card" style="border-color:#fee2e2">'
+    +'<div class="dash-card-header"><div class="dash-card-title" style="color:var(--danger)">⚠️ Danger Zone</div></div>'
+    +'<div style="display:flex;gap:10px;flex-wrap:wrap">'
+    +'<button class="btn btn-sm btn-outline" onclick="if(confirm(\'Clear all posted jobs from DB?\')){{DB.truncate(\'jobs\');DB.seedJobs(ALL_JOBS);dbRefreshAdmin();toast(\'Jobs table reset\',\'info\')}}">Reset Jobs Table</button>'
+    +'<button class="btn btn-sm btn-outline" onclick="if(confirm(\'Clear all applications?\')){{DB.truncate(\'applications\');APP.applications=[];dbRefreshAdmin();toast(\'Applications cleared\',\'info\')}}">Clear Applications</button>'
+    +'<button class="btn btn-sm btn-outline" onclick="if(confirm(\'Clear saved jobs?\')){{DB.truncate(\'saved_jobs\');APP.savedJobs=[];dbRefreshAdmin();toast(\'Saved jobs cleared\',\'info\')}}">Clear Saved Jobs</button>'
+    +'<button class="btn btn-sm btn-danger" onclick="if(confirm(\'⚠️ DROP ALL DATA? This cannot be undone.\')){{DB.dropAll();localStorage.removeItem(\'hyrup_session_user\');location.reload()}}">🗑 Drop All Data</button>'
+    +'</div></div>';
+}
+
+function dbRefreshAdmin(){
+  var c = document.getElementById('dash-content');
+  if(c) renderDBAdmin(c);
+}
+
+function dbRunQuery(sql){
+  var inp = document.getElementById('db-query-input');
+  if(!sql && inp) sql = inp.value.trim();
+  if(!sql) return;
+  if(inp) inp.value = sql;
+  var res = DB.execQuery(sql);
+  var el = document.getElementById('db-query-results');
+  if(!el) return;
+  if(res.error){
+    el.innerHTML = '<div style="color:#f87171;font-family:monospace;font-size:.8rem;padding:10px;background:#1e293b;border-radius:6px">❌ Error: '+res.error+'</div>';
+    return;
+  }
+  if(!res.rows||!res.rows.length){
+    el.innerHTML = '<div style="color:#4ade80;font-family:monospace;font-size:.8rem;padding:10px;background:#1e293b;border-radius:6px">✓ Query OK — '+res.affected+' row(s) affected. No rows to display.</div>';
+    return;
+  }
+  var cols = Object.keys(res.rows[0]);
+  var thStyle = 'padding:7px 12px;background:#1e293b;color:#94a3b8;font-family:monospace;font-size:.72rem;text-align:left;border-bottom:1px solid #334155;white-space:nowrap';
+  var tdStyle = 'padding:6px 12px;font-family:monospace;font-size:.72rem;color:#e2e8f0;border-bottom:1px solid #1e293b;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+  el.innerHTML = '<div style="color:#4ade80;font-family:monospace;font-size:.75rem;margin-bottom:8px">✓ '+res.rows.length+' row(s) returned</div>'
+    +'<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;background:#0f172a;border-radius:6px;overflow:hidden">'
+    +'<thead><tr>'+cols.map(function(c){ return '<th style="'+thStyle+'">'+c+'</th>'; }).join('')+'</tr></thead>'
+    +'<tbody>'
+    +res.rows.map(function(row){
+      return '<tr style="transition:background .15s" onmouseover="this.style.background=\'#1e293b\'" onmouseout="this.style.background=\'transparent\'">'
+        +cols.map(function(c){
+          var v = row[c];
+          if(v===null||v===undefined) v='<span style="color:#475569">NULL</span>';
+          else if(typeof v==='object') v=JSON.stringify(v).slice(0,80);
+          else v = String(v).slice(0,120);
+          return '<td style="'+tdStyle+'" title="'+String(row[c]||'')+'">'+v+'</td>';
+        }).join('')+'</tr>';
+    }).join('')
+    +'</tbody></table></div>';
+}
+
+// Wire DB Admin into sidebar
+var _origShowDashPanel = showDashPanel;
+showDashPanel = function(panel, el){
+  if(panel==='db-admin'){
+    document.querySelectorAll('.sidebar-item').forEach(function(i){i.classList.remove('active')});
+    if(el) el.classList.add('active');
+    APP.currentDashPanel = 'db-admin';
+    var c = document.getElementById('dash-content');
+    if(c) renderDBAdmin(c);
+    return;
+  }
+  _origShowDashPanel(panel, el);
+};
+
+// Add DB Admin to sidebar HTML (injected after DOM ready)
+function injectDBAdminSidebar(){
+  var nav = document.querySelector('.sidebar-nav');
+  if(!nav || document.getElementById('dash-nav-db')) return;
+  var div = document.createElement('div');
+  div.className = 'sidebar-item';
+  div.id = 'dash-nav-db';
+  div.innerHTML = '<span class="icon">🗄️</span> DB Admin';
+  div.onclick = function(){ showDashPanel('db-admin', div); };
+  nav.appendChild(div);
+}
+
+// Auto-login if session persists
+function tryAutoLogin(){
+  try{
+    var saved = localStorage.getItem('hyrup_session_user');
+    if(saved){
+      var u = JSON.parse(saved);
+      APP.user = u; APP.isLoggedIn = true;
+      document.getElementById('floatingChat').style.display = 'block';
+      updateNavActions();
+      // Load persisted applications from DB
+      if(u._dbId||u.email){
+        var dbApps = DB.select('applications',{userId: u._dbId||u.email},{orderBy:'_createdAt',order:'desc'});
+        dbApps.forEach(function(a){
+          var exists = APP.applications.find(function(x){ return x.id===a._id; });
+          if(!exists) APP.applications.unshift({id:a._id,title:a.jobTitle,company:a.company,date:'Previously',status:a.status});
+        });
+        // Load saved jobs
+        var dbSaved = DB.select('saved_jobs',{userId: u._dbId||u.email});
+        dbSaved.forEach(function(s){
+          var job = ALL_JOBS.find(function(j){ return j.id===s.jobId; });
+          if(job && !APP.savedJobs.find(function(x){ return x.id===job.id; })) APP.savedJobs.push(job);
+        });
+      }
+    }
+  }catch(e){}
+}
+
+// ---- SCROLL REVEAL ----
+function initReveal() {
+  var reveals = document.querySelectorAll('.reveal:not(.visible)');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:0.07});
+  reveals.forEach(function(r){obs.observe(r)});
+}
+
+// ---- INIT ----
+document.addEventListener('DOMContentLoaded', function(){
+  dbInit();           // seed DB from in-memory jobs
+  tryAutoLogin();     // restore session if any
+  injectDBAdminSidebar(); // add DB Admin to sidebar
+  initReveal();
+  initHomeFeatured();
+  // Init bot FAB
+  var fab = document.getElementById('hyrBotFab');
+  if(fab) fab.style.display = 'flex';
+  // Show badge after 3s on first visit
+  setTimeout(function(){
+    if(!BOT.open && !BOT.badgeShown){
+      var badge = document.getElementById('botBadge');
+      if(badge){ badge.style.display='flex'; BOT.badgeShown=true; }
+    }
+  }, 3000);
+  window.addEventListener('scroll', function(){
+    document.getElementById('navbar').style.boxShadow = window.scrollY>8?'0 4px 24px rgba(0,0,0,.07)':'none';
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open')});
+  });
+});
+</script>
+</body>
+</html>
